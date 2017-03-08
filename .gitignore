@@ -1,6 +1,4 @@
 node_modules
-*.min.js
-*.min.css
 *.js.map
 css/*.css
 file/*.sh
