@@ -6,7 +6,9 @@ This website is based on [Start Bootstrap - Freelancer v3.3.7+1](http://startboo
 
 This procedure was tested on Lubuntu 16.04 LTS Xenial Xerus on March 2017.
 
-The *Start Bootstrap* template is built with Gulp and use some optional scripts written in TypeScript. You may use built files in the *dist* folder but if you want to change the template style or add some scripting, you need to install these tools to build the site.
+The *Start Bootstrap* template is built with Gulp and uses some optional scripts written in TypeScript. If you want only to change the content, you can edit *index.html* and use pre-built files in the *dist* folder.
+
+However, if you want to change the template style or add some scripting, you need to install these tools to build the site.
 
 1. Install nodejs
 
