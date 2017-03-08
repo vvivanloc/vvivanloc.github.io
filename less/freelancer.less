@@ -7,7 +7,7 @@ body {
 }
 
 p {
-	font-size: 20px;
+	font-size: 18px;
 }
 
 p.small {
@@ -33,39 +33,10 @@ hr.star-light,
 hr.star-primary {
     padding: 0;
     border: none;
-    border-top: solid 5px;
+    border-top: solid 2px;
     text-align: center;
     max-width: 250px;
     margin: 25px auto 30px;
-}
-
-hr.star-light:after,
-hr.star-primary:after {
-    content: "\f005";
-    font-family: FontAwesome;
-    display: inline-block;
-    position: relative;
-    top: -0.8em;
-    font-size: 2em;
-    padding: 0 0.25em;
-}
-
-hr.star-light {
-    border-color: white;
-}
-
-hr.star-light:after {
-    background-color: @theme-success;
-    color: white;
-}
-
-hr.star-primary {
-    border-color: @theme-primary;
-}
-
-hr.star-primary:after {
-    background-color: white;
-    color: @theme-primary;
 }
 
 .img-centered {
@@ -90,7 +61,7 @@ header {
 			font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 			text-transform: uppercase;
 			font-weight: 700;
-			font-size: 2em;
+			font-size: 1.5em;
 		}
 		.skills {
 			font-size: 1.25em;
@@ -107,7 +78,7 @@ header {
 		}
 		.intro-text {
 			.name {
-				font-size: 4.75em;
+				font-size: 3.75em;
 			}
 			.skills {
 				font-size: 1.75em;
@@ -183,7 +154,7 @@ header {
         -moz-transition: padding 0.3s;
         transition: padding 0.3s;
 	    .navbar-brand {
-	        font-size: 2em;
+	        font-size: 1.5em;
 	        -webkit-transition: all 0.3s;
 	        -moz-transition: all 0.3s;
 	        transition: all 0.3s;
@@ -191,9 +162,9 @@ header {
     }
     .navbar-custom.affix {
         padding: 10px 0;
-		.navbar-brand {
-	        font-size: 1.5em;
-	    }
+		// .navbar-brand {
+	    //     font-size: 1.5em;
+	    // }
 	}
 }
 
@@ -299,8 +270,8 @@ section.success {
 	    margin: 0;
 	    font-size: 0.85em;
 	    line-height: 1.764705882em;
-	    vertical-align: middle;
-	    vertical-align: baseline;
+	    // vertical-align: middle;
+	    // vertical-align: baseline;
 	    opacity: 0;
 	    -webkit-transition: top 0.3s ease,opacity 0.3s ease;
 	    -moz-transition: top 0.3s ease,opacity 0.3s ease;
