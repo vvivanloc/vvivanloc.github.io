@@ -2,3 +2,5 @@ node_modules
 *.js.map
 css/*.css
 file/*.sh
+js/greetings.js
+js/mailurlBuilder.js
