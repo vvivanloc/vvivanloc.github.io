@@ -507,7 +507,7 @@ let lGreetingsArray = [
 
 // transform the array into a map
 let lGreetingMap: { [key: string]: { countryName: string, greeting: string } } = {};
-lGreetingsArray.forEach((value: string[], index: number, array: string[][]) => { lGreetingMap[value[0]] = { countryName: value[1], greeting: value[2] } });
+lGreetingsArray.forEach((value: string[], _index: number, _array: string[][]) => { lGreetingMap[value[0]] = { countryName: value[1], greeting: value[2] } });
 lGreetingsArray = [];
 
 let lCountryCodes: string[] = Object.keys(lGreetingMap);

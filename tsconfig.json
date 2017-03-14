@@ -1,6 +1,16 @@
 {
+
     "compilerOptions": {
         "noImplicitAny": true,
-        "sourceMap": true
-    }
+        "sourceMap": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "watch": true
+    },
+    "exclude": [
+        "node_modules"
+    ]
 }
