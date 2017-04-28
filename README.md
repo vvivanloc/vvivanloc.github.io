@@ -26,38 +26,37 @@ However, if you want to change the template style or add some scripting, you nee
     sudo apt-get install -y build-essential
     ```
 
-2. Install gulp
+2. Install dev tools
 
     [Gulp](http://gulpjs.com/) is an automating toolkit. You may use Python or Webpack, *-insert your favorite batch tool here-* but since the *Start Bootstrap* template is built with gulp, you have to use it.
 
-    *Why a global install then a link ? To prevent wasting space by duplicating the gulp within the local node_modules folder.*
-
     - start a command line interface
-    - cd  <website_local_directory>
+    
+    ```
+    cd  <website_local_directory>
+    ```
+
+    2.a Fast & safe, but potentially wasting some HDD space  : All tools in the local directory
+    
+    ```
+    npm install 
+    ```
+
+    2.b Saving some space but potentially breaking your global package versions.
+
+    Manually install gulp and all its dependencies listed in package.json
 
     ```
     sudo npm install -g gulp
     sudo npm link gulp
-    ```
 
-    A node_modules/gulp folder should appear.
+    ...
 
-3. Install the following gulp plugins
-
-    - gulp-less
-    - browser-sync
-    - gulp-header
-    - gulp-clean-css
-    - gulp-rename
-    - gulp-uglify
-    - gulp-typescript
-    - gulp-sourcemaps 
-    - gulp-concat
-
-    ```
     sudo npm install -g gulp-plugin-name
     sudo npm link gulp-plugin-name
     ```
+
+    A node_modules/gulp folder should appear.
 
 4. Install TypeScript
 

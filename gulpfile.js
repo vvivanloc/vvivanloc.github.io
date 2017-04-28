@@ -10,6 +10,8 @@ var ts = require('gulp-typescript');
 var sourcemaps = require('gulp-sourcemaps');
 var path = require('path');
 var concat = require('gulp-concat'); 
+var babel = require('gulp-babel');
+
 
 // Set the banner content
 var banner = ['/*!\n',
@@ -23,7 +25,7 @@ var banner = ['/*!\n',
 
 // Compile LESS files from /less into /css
 gulp.task('less', function() {
-    return gulp.src('less/freelancer.less')
+    return gulp.src(['less/freelancer.less','less/custom.less'])
         .pipe(less())
         .pipe(header(banner, { pkg: pkg }))
         .pipe(gulp.dest('css'))
@@ -34,7 +36,7 @@ gulp.task('less', function() {
 
 // Minify compiled CSS
 gulp.task('minify-css', ['less'], function() {
-    return gulp.src('css/freelancer.css')
+    return gulp.src(['css/freelancer.css','css/custom.css'])
         .pipe(cleanCSS({ compatibility: 'ie8' }))
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('dist/css'))
@@ -48,7 +50,7 @@ gulp.task('minify-css', ['less'], function() {
 var failed = false;
 var tsProject = ts.createProject('tsconfig.json');
 gulp.task('ts', function () {
-    var tsResult = gulp.src('js/*.ts')
+    var tsResult = gulp.src('ts/*.ts')
         .pipe(sourcemaps.init())
         .pipe(tsProject())
         //gracefully report error instead of breaking watch
@@ -79,9 +81,21 @@ gulp.task('ts', function () {
     }))
 });
 
+//jsx to js
+gulp.task("jsx", function(){
+    return gulp.src("jsx/*.jsx").
+        pipe(sourcemaps.init()).
+        pipe(babel({
+            plugins: ['transform-react-jsx'],
+            presets: ["react-native"]
+        })).
+        pipe(sourcemaps.write('.')).
+        pipe(gulp.dest("jsx"));
+});
+
 // Minify JS
 gulp.task('minify-js', function() {
-    return gulp.src('js/*.js')
+    return gulp.src(['js/*.js','ts/*.js','jsx/*.js','!jsx/hello.js'])
         .pipe(concat('scripts.js'))
         .pipe(uglify())
         .pipe(header(banner, { pkg: pkg }))
@@ -91,6 +105,19 @@ gulp.task('minify-js', function() {
             stream: true
         }))
 });
+
+// Minify JS
+gulp.task('concat-js', function() {
+    return gulp.src(['js/*.js','ts/*.js','jsx/*.js','!jsx/hello.js'])
+        .pipe(concat('scripts.js'))
+        .pipe(header(banner, { pkg: pkg }))
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest('dist/js'))
+        .pipe(browserSync.reload({
+            stream: true
+        }))
+});
+
 
 
 
@@ -114,7 +141,7 @@ gulp.task('copy', function() {
 })
 
 // Run everything
-gulp.task('default', ['less', 'minify-css', 'minify-js', 'copy']);
+gulp.task('default', ['less', 'minify-css', 'minify-js', 'jsx', 'copy']);
 
 // Configure the browserSync task
 gulp.task('browserSync', function() {
@@ -126,11 +153,14 @@ gulp.task('browserSync', function() {
 })
 
 // Dev task with browserSync
-gulp.task('dev', ['browserSync', 'less', 'minify-css',  'minify-js'], function() {
+gulp.task('dev', ['browserSync', 'less', 'minify-css', 'jsx', 'concat-js'], function() {
     gulp.watch('less/*.less', ['less']);
     gulp.watch('css/*.css', ['minify-css']);
     gulp.watch('js/*.js', ['minify-js']);
+    gulp.watch('ts/*.ts', ['minify-js']);
+    gulp.watch('jsx/*.jsx', ['jsx']);
     // Reloads the browser whenever HTML or JS files change
     gulp.watch('*.html', browserSync.reload);
+    gulp.watch('jsx/*.html', browserSync.reload);
     gulp.watch('js/**/*.js', browserSync.reload);
 });

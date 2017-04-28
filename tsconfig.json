@@ -8,7 +8,10 @@
         "typeRoots": [
             "node_modules/@types"
         ],
-        "watch": true
+        "watch": true,
+        "lib": ["dom", "es2015.promise", "es5"],
+        "module": "amd",
+        "jsx":"react"
     },
     "exclude": [
         "node_modules"

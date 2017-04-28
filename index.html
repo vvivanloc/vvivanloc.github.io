@@ -17,6 +17,9 @@
     <!-- Theme CSS -->
     <link href="dist/css/freelancer.min.css" rel="stylesheet">
 
+    <!-- custom CSS -->
+    <link href="dist/css/custom.min.css" rel="stylesheet">
+
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -28,6 +31,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
 
 </head>
 
@@ -46,13 +50,15 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar">
                     <li class="hidden">
                         <a href="#page-top"></a>
-                    </li>
+                    </li>                   
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
                     <li class="page-scroll">
                         <a href="#about">A propos</a>
-                    </li>                   
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -77,101 +83,105 @@
     </header>
 
 
-    <!-- About Section -->
-    <section class="success" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>A propos</h2>
-                    <hr class="star-light">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-lg-offset-2">
-                    <p><span data-toggle="tooltip" title="France" id="greeting">Bonjour !</span></p>
-                    <p>Vous avez une idée à concrétiser ? Après un état de l'art, je vous propose différentes solutions techniques. Je transforme alors votre idée en prototype avec la solution technique choisie.</p><p>Je peux aussi optimiser les performances de votre application existante, web ou native.</p>
-                </div>
-                <div class="col-lg-4">
-                    <p>J'ai 9 ans d'expérience dans la création de moteurs 3D qui affichent une petite théière ou un avion entier. J'ai aussi optimisé et modifié de nombreuses applications.</p><p>A mes heures perdues, je fais crier ma guitare et je prends des photos pour voir le monde différemment.</p>
-                </div>
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <a href="file/cv_vvivanloc.pdf" class="btn btn-lg btn-outline">
-                        <i class="fa fa-download"></i> Voir mon CV
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="text-center">
-        <div class="footer-above">
+        <!-- About Section -->
+        <section class="success" id="about">
             <div class="container">
                 <div class="row">
-                    <div class="footer-col col-md-4">
-                        <h3>Lieu</h3>
-                        <p>Toulouse, France</p>
+                    <div class="col-lg-12 text-center">
+                        <h2>A propos</h2>
+                        <hr class="star-light">
                     </div>
-                    <div class="footer-col col-md-4">
-                        <h3>Contact</h3>
-                        <div >
-                        <a id="mailhref" class="btn btn-lg btn-outline" href="#" data-toggle="tooltip" title="Envoyez-moi un message" ><i class="fa fa-fw fa-envelope" style="line-height: 10px"></i></a>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-lg-offset-2">
+                        <p><span data-toggle="tooltip" title="France" id="greeting">Bonjour !</span></p>
+                        <p>Vous avez une idée à concrétiser ? Après un état de l'art, je vous propose différentes solutions
+                            techniques. Je transforme alors votre idée en prototype avec la solution technique choisie.</p>
+                        <p>Je peux aussi optimiser les performances de votre application existante, web ou native.</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <p>J'ai 9 ans d'expérience dans la création de moteurs 3D qui affichent une petite théière ou un avion
+                            entier. J'ai aussi optimisé et modifié de nombreuses applications.</p>
+                        <p>A mes heures perdues, je fais crier ma guitare et je prends des photos pour voir le monde différemment.</p>
+                    </div>
+                    <div class="col-lg-8 col-lg-offset-2 text-center">
+                        <a href="file/cv_vvivanloc.pdf" class="btn btn-lg btn-outline">
+                            <i class="fa fa-download"></i> Voir mon CV
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center">
+            <div class="footer-above">
+                <div class="container">
+                    <div class="row">
+                        <div class="footer-col col-md-4">
+                            <h3>Lieu</h3>
+                            <p>Toulouse, France</p>
                         </div>
-                    </div>
-                    <div class="footer-col col-md-4">
-                        <h3>Sur le web</h3>
-                        <ul class="list-inline">
-                            <li>
-                                <a href="https://github.com/vvivanloc" class="btn-social btn-outline" data-toggle="tooltip" title="github" ><i class="fa fa-fw fa-github"></i></a>
-                            </li>
-                            <li>
-                                <a href="https://www.linkedin.com/in/vvivanloc/" class="btn-social btn-outline" data-toggle="tooltip" title="linkedin" ><i class="fa fa-fw fa-linkedin"></i></a>
-                            </li>
-                            <li>
-                                <a href="https://www.flickr.com/photos/143696800@N07/" class="btn-social btn-outline" data-toggle="tooltip" title="flickr"><i class="fa fa-fw fa-flickr"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--<div class="footer-col col-md-4">
+                        <div class="footer-col col-md-4">
+                            <h3>Contact</h3>
+                            <div>
+                                <a id="mailhref" class="btn btn-lg btn-outline" href="#" data-toggle="tooltip" title="Envoyez-moi un message"><i class="fa fa-fw fa-envelope" style="line-height: 10px"></i></a>
+                            </div>
+                        </div>
+                        <div class="footer-col col-md-4">
+                            <h3>Sur le web</h3>
+                            <ul class="list-inline">
+                                <li>
+                                    <a href="https://github.com/vvivanloc" class="btn-social btn-outline" data-toggle="tooltip" title="github"><i class="fa fa-fw fa-github"></i></a>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/in/vvivanloc/" class="btn-social btn-outline" data-toggle="tooltip" title="linkedin"><i class="fa fa-fw fa-linkedin"></i></a>
+                                </li>
+                                <li>
+                                    <a href="https://www.flickr.com/photos/143696800@N07/" class="btn-social btn-outline" data-toggle="tooltip" title="flickr"><i class="fa fa-fw fa-flickr"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--<div class="footer-col col-md-4">
                         <h3>About Freelancer</h3>
                         <p>Freelance is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
                     </div>-->
-                </div>
-            </div>
-        </div>
-        <div class="footer-below">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        Tous droits réservés &copy; V. Vivanloc 2017
                     </div>
                 </div>
             </div>
+            <div class="footer-below">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            Tous droits réservés &copy; V. Vivanloc 2017
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+        <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+            <a class="btn btn-primary" href="#page-top">
+                <i class="fa fa-chevron-up"></i>
+            </a>
         </div>
-    </footer>
 
-    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
-        <a class="btn btn-primary" href="#page-top">
-            <i class="fa fa-chevron-up"></i>
-        </a>
-    </div>
 
-  
 
-    <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+        <!-- jQuery -->
+        <script src="vendor/jquery/jquery.min.js"></script>
 
-    <!-- Bootstrap Core  -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!-- Bootstrap Core  -->
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Plugin -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+        <!-- Plugin -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
-    <!-- Theme + custom scripts -->
-    <script src="dist/js/scripts.min.js"></script>
+        <!-- Theme + custom scripts -->
+        <script src="dist/js/scripts.min.js"></script>
 
-    
+
 
 </body>
 

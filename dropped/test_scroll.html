@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- custom CSS -->
+    <link href="../dist/css/custom.min.css" rel="stylesheet">
+    <title>test</title>
+
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .content-huge {
+            height: 900px;
+        }
+        
+        .content {
+            height: 600px;
+        }
+        
+        .dummy-canvas {
+            background-image: url('tests/over9000.gif');
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="thirdparty/three/three.js"></script>
+    <script src="thirdparty/three/Detector.js"></script>
+    <script src="thirdparty/three/Projector.js"></script>
+    <script src="thirdparty/cannon/cannon.js"></script>
+
+    <script src="thirdparty/require/require.min.js"></script>
+
+    <script>
+        requirejs.config({
+            baseUrl: '.',
+            paths: {
+                app: 'app'
+            }
+        });
+
+        // http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+        const getParams = query => {
+            if (!query) {
+                return {};
+            }
+
+            return (/^[?#]/.test(query) ? query.slice(1) : query)
+                .split('&')
+                .reduce((params, param) => {
+                    let [key, value] = param.split('=');
+                    params[key] = value ? decodeURIComponent(value.replace(/\+/g, ' ')) : '';
+                    return params;
+                }, {});
+        };
+
+        var lParams = getParams(window.location.search);
+        document.title = lParams["test"];
+
+        requirejs(["test_" + lParams["test"] + ".js"]);
+    </script>
+    <div class="content-huge" style="background: #888">
+        Header
+    </div>
+    <div class="content" id="section0" style="background: #60a">
+        <div id="portalinput" class="portal"></div>
+    </div>
+
+
+    <div class="content" id="section1" style="background: #600">
+        Content 1
+        <div>
+            <div class="floatleft">Plop</div>
+            <div class="floatright portal-right" id="portaloutput">
+               <canvas id="portaloutputcanvas" width="300" height="590" style="width: 300px; height: 590px;"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="content" id="section2" style="background: green">
+        Content 2
+        <div>
+            <div class="floatleft">Plip</div>
+            <div class="floatright portal-right">
+            </div>
+        </div>
+    </div>
+    <div class="content" id="section3" style="background: blue">
+        Content 3
+         <div>
+            <div class="floatleft">Plup</div>
+            <div class="floatright portal-right">
+            </div>
+        </div>
+    </div>
+    <div class="content" id="section4" style="background: yellow">
+        Content 4
+        <div>
+            <div class="floatleft">Plap</div>
+            <div class="floatright portal-right">
+            </div>
+        </div>
+    </div>
+    <div class="content" id="footer" style="background: #888">
+        Footer
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>    
+    <meta charset="utf-8">
+    <title>test</title>
+    
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        div {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="thirdparty/three/three.js"></script>
+    <script src="thirdparty/three/Detector.js"></script>
+    <script src="thirdparty/three/Projector.js"></script>
+    <script src="thirdparty/cannon/cannon.js"></script>
+
+    <script src="thirdparty/require/require.min.js"></script>
+
+    <script>
+        requirejs.config({
+            baseUrl: '.',
+            paths: {
+                app: 'app'
+            }
+        });
+
+        // http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+        const getParams = query => {
+        if (!query) {
+            return { };
+        }
+
+        return (/^[?#]/.test(query) ? query.slice(1) : query)
+            .split('&')
+            .reduce((params, param) => {
+            let [ key, value ] = param.split('=');
+            params[key] = value ? decodeURIComponent(value.replace(/\+/g, ' ')) : '';
+            return params;
+            }, { });
+        };
+
+        var lParams = getParams(window.location.search);
+        document.title = lParams["test"];
+
+        requirejs(["test_"+lParams["test"]+".js"]);
+        
+    </script>
+    <div id="container"></div>
+</body>
+
+</html>

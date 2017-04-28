@@ -6,13 +6,14 @@
             "command": "tsc",
             "args": ["-w"],
             "isShellCommand": true,
-            "isBackground": true,            
+            "isBackground": true,  
+            "showOutput": "silent",          
             "problemMatcher": "$tsc-watch"
         },
         {
             "taskName": "build",
             "command": "gulp",
-            "args": ["build"],
+            "args": ["dev"],
             "isShellCommand": true
         }
     ]

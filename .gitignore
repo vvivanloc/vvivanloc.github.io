@@ -4,4 +4,8 @@ css/*.css
 file/*.sh
 js/greetings.js
 js/mailurlBuilder.js
+dropped/lib/*.js
 dropped/*.js
+dropped/app/*.js
+jsx/*.js
+*.blend1

@@ -739,7 +739,7 @@ declare module CANNON {
         faceNormals: Vec3[];
         uniqueEdges: Vec3[];
 
-        constructor(points?: Vec3[], faces?: number[]);
+        constructor(points?: Vec3[], faces?: number[][]);
 
         computeEdges(): void;
         computeNormals(): void;
@@ -977,7 +977,6 @@ declare module CANNON {
         addMaterial(m: Material): void;
         addContactMaterial(cmat: ContactMaterial): void;
         step(dy: number, timeSinceLastCalled?: number, maxSubSteps?: number): void;
-
     }
 
     export interface IEvent {
