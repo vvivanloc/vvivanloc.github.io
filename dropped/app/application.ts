@@ -34,7 +34,7 @@ class Application {
     private mFps: number;
     private mPhysicsDeltaTime: number;
 
-    constructor(pDOMContainedID: string, pCanvas ?: HTMLCanvasElement) {
+    constructor(pDOMContainedID: string, pCanvas?: HTMLCanvasElement) {
         this.mSceneObjects = new SceneObjects({ mass: 2, startHeight: 7, objectHeight: 2 });
 
         this.enablePhysics = true;
@@ -54,6 +54,13 @@ class Application {
         this.mPhysicsDeltaTime = 1 / this.mFps;
 
         this.onWindowResize();
+
+        // var defaultPrevent = function (e: Event) { e.preventDefault(); }
+        // document.body.parentElement.addEventListener("touchstart", defaultPrevent);
+        // document.body.parentElement.addEventListener("touchmove", defaultPrevent);
+        // document.body.addEventListener("touchstart", defaultPrevent);
+        // document.body.addEventListener("touchmove", defaultPrevent);
+
     }
 
 
@@ -162,7 +169,7 @@ class Application {
                 if (lResizeTimer) {
                     clearTimeout(lResizeTimer);
                 }
-                lResizeTimer = setTimeout( () => {
+                lResizeTimer = setTimeout(() => {
                     console.log("resize canvas");
                     this.onWindowResize();
                     lResizeTimer = null;
@@ -183,7 +190,7 @@ class Application {
         window.addEventListener("mouseup", this.onMouseUp, false);
         window.addEventListener("touchend", this.onTouchUp, false);
 
-        this.mDOMContainer.addEventListener("mouseover",this.onMouseOver)
+        this.mDOMContainer.addEventListener("mouseover", this.onMouseOver)
     }
 
 
@@ -261,7 +268,7 @@ class Application {
     }
 
     private onTouchMove = (e: TouchEvent) => {
-        e.preventDefault();
+        // e.preventDefault();
         let touches = e.changedTouches;
         if (touches.length > 0) {
             this.mMarker.move(this.touchWindowToPercentagePos(new THREE.Vector2(touches[0].clientX, touches[0].clientY)), false);
@@ -277,7 +284,7 @@ class Application {
     }
 
     private onTouchDown = (e: TouchEvent) => {
-        e.preventDefault();
+        // e.preventDefault();
         let touches = e.changedTouches;
         if (touches.length > 0) {
 
@@ -299,9 +306,9 @@ class Application {
         }
     }
 
-    onMouseOver = () => { 
+    onMouseOver = () => {
         this.mDOMContainerIsHovered = true;
-     }
+    }
     onWindowResize = () => {
         if (!this.mDOMContainer) {
             console.error("invalid contained");
@@ -321,7 +328,7 @@ class Application {
             this.mDOMContainer.removeEventListener("mouseover", this.onMouseOver);
         }
         this.mDOMContainer = pElement;
-        this.mDOMContainer.addEventListener("mouseover", this.onMouseOver )
+        this.mDOMContainer.addEventListener("mouseover", this.onMouseOver)
     }
 
     animate = () => {

@@ -46,5 +46,7 @@
         $('[data-toggle="tooltip"]').tooltip(); 
     });
 
+    //flip
+    $(".flipcard").flip();
 
 })(jQuery); // End of use strict

@@ -1,11 +1,15 @@
 
 .portal {
     height:640px;
+    overflow-y: hidden;
+    touch-action: none;
 }
 
 .portal-right {
-    width: 300px;
-    height: 500px;
+    //width: 100%;
+    min-width: 200px;
+    min-height: 400px;
+    max-height: 500px;
 }
 
 .floatleft {
@@ -15,4 +19,63 @@
 
 .floatright {
     float: right;    
+}
+
+canvas {
+    cursor: none;
+}
+
+.paddingright {
+    padding-right: 50px;
+}
+
+/* fix ugly Bootstrap fix causing scrolling mess+nav button position error in mobile definition */
+/* https://github.com/twbs/bootstrap/issues/10875 */
+.row {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+
+.bigbtn {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2) !important;
+    background-image: none !important;
+    background-color: #fff !important;
+  
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+
+    vertical-align: middle; 
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+  
+    border: 1px solid transparent;
+    border-radius: 4px;
+        
+}
+
+.bigbtn:active,
+.bigbtn-default:hover {
+  box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.2)  !important;
+  transition-delay: 0s  !important;
+  background-image: none !important;
+  background-color: #fff !important;
+}
+
+.bigbtn-default {
+  filter: none;
+  border: 1px solid #ddd !important;
+  background-image: none !important;
+  background-color: #fff !important;
+  display: table;
+}
+
+.paddingtop {
+    padding-top: 15px;
 }

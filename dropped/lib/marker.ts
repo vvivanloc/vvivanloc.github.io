@@ -4,7 +4,7 @@ import JointConstraint = require("lib/jointConstraint");
 import SceneObjects = require("lib/sceneObjects");
 
 class Marker {
-    private mView: MarkerView;
+    private mView: MarkerView.MarkerView;
     private mJointConstraint: JointConstraint;
 
     private mClosestDistance = -1.0;
@@ -15,7 +15,7 @@ class Marker {
     private mSceneObjects: SceneObjects;
 
     constructor(pScene: THREE.Scene, pCamera: THREE.PerspectiveCamera, pWorld: CANNON.World, pSceneObjects: SceneObjects) {
-        this.mView = new MarkerView(pScene);
+        this.mView = new MarkerView.MarkerView(pScene);
         this.mJointConstraint = new JointConstraint(pWorld);
         this.mCamera = pCamera;
         this.mRaycaster = new THREE.Raycaster();
@@ -39,10 +39,14 @@ class Marker {
         let entity = this.findNearestIntersectingObject(pScreenPosPercentage, this.mCamera, this.mSceneObjects.mMeshes);
         if (entity) {
             let lClosestDistance = entity.distance;
-            let pos = this.projectOntoPlane(pScreenPosPercentage, this.mCamera, lClosestDistance);
-            this.mView.hover(pos);
+            let lPos = this.projectOntoPlane(pScreenPosPercentage, this.mCamera, lClosestDistance);
+            this.mView.setState(MarkerView.State.hover);
+            this.mView.updateMeshPosition(lPos);
         } else {
-            this.mView.hide();
+            let lClosestDistance = this.mCamera.getWorldPosition().distanceTo(new THREE.Vector3(0,0,0))*1.5;
+            let lPos = this.projectOntoPlane(pScreenPosPercentage, this.mCamera, lClosestDistance);
+            this.mView.setState(MarkerView.State.move);
+            this.mView.updateMeshPosition(lPos);
         }
 
     }
@@ -51,16 +55,17 @@ class Marker {
         // Move and project on the plane
 
         if (this.mJointConstraint.hasMouseConstraint()) {
-            let pos = this.projectOntoPlane(pScreenPosPercentage, this.mCamera, this.mClosestDistance);
-            if (pos) {
-                this.mView.move(pos);
-                this.mJointConstraint.move(pos);
+            let lPos = this.projectOntoPlane(pScreenPosPercentage, this.mCamera, this.mClosestDistance);
+            if (lPos) {
+                this.mView.setState(MarkerView.State.pick);
+                this.mView.updateMeshPosition(lPos);
+                this.mJointConstraint.move(lPos);
             }
         } else {
             if (pEnableHover) {
                 this.hover(pScreenPosPercentage);
             } else {
-                this.mView.hide();
+                this.mView.setState(MarkerView.State.hide);
             }
         }
     }
@@ -104,16 +109,17 @@ class Marker {
         if (!(entity.object instanceof THREE.Mesh)) {
             return;
         }
-        let pos = entity.point;
-        if (pos && entity.object.name !== "ground") {
+        let lPos = entity.point;
+        if (lPos && entity.object.name !== "ground") {
             this.mClosestDistance = entity.distance;
             this.mConstraintDown = true;
             // Set marker on contact point
-            this.mView.move(pos);
+            this.mView.setState(MarkerView.State.pick);
+            this.mView.updateMeshPosition(lPos);
 
             let idx = this.mSceneObjects.mMeshes.indexOf(entity.object);
             if (idx !== -1) {
-                this.mJointConstraint.add(pos, this.mSceneObjects.mBodies[idx]);
+                this.mJointConstraint.add(lPos, this.mSceneObjects.mBodies[idx]);
             }
         }
 
@@ -126,7 +132,7 @@ class Marker {
         if (pEnableHover) {
             this.hover(pScreenPosPercentage);
         } else {
-            this.mView.hide();
+            this.mView.setState(MarkerView.State.hide);
         }
         // Send the remove mouse joint to server
         this.mJointConstraint.remove();

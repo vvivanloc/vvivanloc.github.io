@@ -17,7 +17,7 @@ const cPortalOutputContainerID = "portaloutput";
 let lNavBar = document.getElementById("mainNav");
 
 let lPortalInputContainer = document.getElementById(cPortalInputContainerID);
-let lPortalOutputContainer = document.getElementById(cPortalOutputContainerID);
+// let lPortalOutputContainer = document.getElementById(cPortalOutputContainerID);
 
 
 
@@ -30,12 +30,14 @@ let lInputApplication = new Application(cPortalInputContainerID);
 let lModels = ["cube", "a380", "wrench", "bulb"];
 lInputApplication.addPortal(false, false);
 lInputApplication.enablePhysics = false;
+lInputApplication.useAnimatedMarker(true);
 lInputApplication.animate();
 
 let lOutputApplicationCanvas = <HTMLCanvasElement>document.getElementById(cPortalOutputContainerID + "canvas");
 let lOutputApplication = new Application(cPortalOutputContainerID, lOutputApplicationCanvas);
 lOutputApplication.addPortal(true, true);
 lOutputApplication.enablePhysics = false;
+lOutputApplication.useAnimatedMarker(true);
 lOutputApplication.animate();
 
 //LayoutUtils.alignOnRight(lPortalInputContainer, lPortalOutputContainer);

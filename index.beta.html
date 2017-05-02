@@ -32,13 +32,27 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core  -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+
+
     <script src="dropped/thirdparty/three/three.js"></script>
     <script src="dropped/thirdparty/three/Detector.js"></script>
     <script src="dropped/thirdparty/three/Projector.js"></script>
     <script src="dropped/thirdparty/cannon/cannon.js"></script>
 
     <script src="dropped/thirdparty/require/require.min.js"></script>
-
 </head>
 
 <body id="page-top" class="index">
@@ -130,12 +144,45 @@
             <div class="row">
                 <h3>Web</h3>
 
-                <a href="#portfolioModalWeb" class="portfolio-link" data-toggle="modal">
-                    <div class="col-sm-6 portfolio-item">
-                        <img src="img/portfolio/web/tablet3DJuumpInfinite.png" class="img-responsive" alt="3DJuumpInfiniteWeb">
+
+                <div class="col-sm-8">
+                    <div class="flipcard">
+                        <div class="front bigbtn bigbtn-default">
+                            <div>
+                                <img class="img-responsive center-block" src="img/portfolio/web/tablet3DJuumpInfinite.png" alt="3DJuumpInfiniteWeb"></img>
+                            </div>
+                            <div class="paddingtop">
+                                One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin.
+                                He lay on his armour-like back, and if he lifted his head a little he could see his brown
+                                belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able
+                                to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared
+                                with the size of the rest of him, waved about helplessly as he looked. "What's happened to
+                                me? " he thought. It wasn't a dream.
+                            </div>
+                        </div>
+                        <div class="back">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><span>Plop</span><span class="pull-right">&times;</span></h4>
+                                </div>
+                                <div class="panel-body">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                                    <p>Nullam malesuada <a target="_blank" href="http://fr.lipsum.com/feed/html">pellentesque</a>                                        lacus at convallis. Nam quam tellus, porttitor non nisl at, congue viverra sapien.
+                                        Nunc suscipit, dui eu efficitur mollis, tellus mauris feugiat purus, id rutrum erat
+                                        turpis ac quam. Ut convallis, lorem sit amet elementum malesuada, mauris massa maximus
+                                        tortor, sit amet interdum augue elit auctor arcu. Curabitur semper id eros ac vestibulum.
+                                        Pellentesque pretium, mi at aliquet varius, diam nibh semper elit, eget lacinia erat
+                                        enim et mi. Ut posuere condimentum lacus, consectetur consectetur enim sollicitudin
+                                        volutpat.</p>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </a>
-                <div class="col-sm-1 portal-right" id="portaloutput">
+                </div>
+
+
+                <div class="col-sm-4 hidden-xs portal-right" id="portaloutput">
                     <canvas id="portaloutputcanvas" width="300" height="590" style="width: 300px; height: 590px;"></canvas>
                 </div>
 
@@ -153,7 +200,7 @@
                         <img src="img/portfolio/dmu/3DJuumpInfinite.png" class="img-responsive" alt="3DJuumpInfinite">
                     </div>
                 </a>
-                <div class="col-sm-1 portal-right">
+                <div class="col-sm-1 hidden-xs portal-right">
                 </div>
 
             </div>
@@ -169,7 +216,7 @@
                         <img src="img/portfolio/optim/thermica.jpg" class="img-responsive" alt="Aircraft Visit">
                     </div>
                 </a>
-                <div class="col-sm-1 portal-right">
+                <div class="col-sm-1 hidden-xs portal-right">
                 </div>
             </div>
         </div>
@@ -184,7 +231,7 @@
                         <img src="img/portfolio/rd/gearbox.png" class="img-responsive" alt="SVGtracing">
                     </div>
                 </a>
-                <div class="col-sm-1 portal-right">
+                <div class="col-sm-1 hidden-xs portal-right">
                 </div>
             </div>
         </div>
@@ -307,18 +354,9 @@
         </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core  -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Plugin -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
     <!-- Theme + custom scripts -->
     <script src="dist/js/scripts.min.js"></script>
-
 
     <script>
         requirejs.config({
