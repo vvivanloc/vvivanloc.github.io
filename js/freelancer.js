@@ -47,6 +47,6 @@
     });
 
     //flip
-    $(".flipcard").flip();
+    // $(".flipcard").flip();
 
 })(jQuery); // End of use strict

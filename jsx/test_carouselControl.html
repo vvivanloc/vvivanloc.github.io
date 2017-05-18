@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../dist/css/custom.min.css" rel="stylesheet">
+    <script src="thirdparty/reactStub.js"></script>
+    <script src="thirdparty/uuid.js"></script>
+
+</head>
+
+<body id="page-top" class="index">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Carousel 1</h2>
+                from jsx without control
+                <carousel id="myCarousel1" data-imgpath="../img/portfolio" data-imgsrcs="web/3DJuumpInfiniteWeb0.png;web/chess1.png" data-titles="3DJuI;chess">
+                </carousel>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Carousel 2</h2>
+                from jsx with control
+                <carousel id="myCarousel2" data-imgpath="../img/portfolio" data-imgsrcs="web/3DJuumpInfiniteWeb0.png;web/chess1.png" data-titles="3DJuI;chess"
+                    data-controls>
+                </carousel>
+            </div>
+        </div>
+
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Carousel 3</h2>
+                only one image
+                <carousel id="myCarousel2" data-imgpath="../img/portfolio" data-imgsrcs="web/chess1.png" data-titles="chess"
+                    data-controls>
+                </carousel>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- jQuery -->
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core  -->
+    <script src="../../vendor/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Theme + custom scripts -->
+    <script src="carousel.js"></script>
+    <script>
+        let lElements = document.getElementsByTagName('carousel');
+        let lCarouselBuilder = new Carousel(lElements);
+        lCarouselBuilder.render();
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../dist/css/custom.min.css" rel="stylesheet">
+
+
+    <!-- jQuery -->
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core  -->
+    <script src="../../vendor/bootstrap/js/bootstrap.js"></script>
+
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+
+    <script src="thirdparty/reactStub.js"></script>
+    <script src="thirdparty/uuid.js"></script>
+
+</head>
+
+<body id="page-top" class="index">
+
+
+
+    <section id="web">
+        <div class="container mid-height">
+            <div class="row">
+                <h3>No config from JS</h3>
+                <somepanel data-names="vvivanloc" data-imgpath="../img/portfolio/clients" data-tooltip>
+                </somepanel>
+
+                <h3>No sponsors with config from JS</h3>
+                <sponsorpanel data-names="">
+                </sponsorpanel>
+
+                <h3>Sponsor single</h3>
+                <sponsorpanel data-names="airbus">
+                </sponsorpanel>
+
+        
+                <h3>Sponsor full with tooltip</h3>
+                <sponsorpanel data-names="airbus;citeespace;museoakropolis;systema;akka;cnrs;realfusio;alstom;openfeeder;signotheque;vvivanloc" data-tooltip>
+                </sponsorpanel>
+
+                <h3>Technologies full with config from JS (no tooltip and smaller height)</h3>
+                <techpanel data-names="c++;bootstrap"  >
+                </techpanel>
+
+                <h3>Technologies full with tooltip</h3>
+                <techpanel data-tooltip data-names="git;powerpoint;arb;glsl;python;blender;gnu build system;qt;bootstrap;gulp;redway3D;cannonjs;html;sphinx;cmake;inkscape;svn;codeXL;jquery;threejs;c++;js;typescript;css;jsx;visualstudio;debian packaging;leaflet;vscode;dictionnary;less;webgl;doxygen;lubuntu;webpack;gcc;npm;word;gdb;opengl;zepto;gimp;openscenegraph">
+                </techpanel>
+
+                <h3>Technologies full with tooltip and margin bottom</h3>
+                <techpanel data-tooltip data-marginbottom=20px data-names="git;powerpoint;arb;glsl;python;blender;gnu build system;qt;bootstrap;gulp;redway3D;cannonjs;html;sphinx;cmake;inkscape;svn;codeXL;jquery;threejs;c++;js;typescript;css;jsx;visualstudio;debian packaging;leaflet;vscode;dictionnary;less;webgl;doxygen;lubuntu;webpack;gcc;npm;word;gdb;opengl;zepto;gimp;openscenegraph">
+                </techpanel>
+
+                
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <!-- Theme + custom scripts -->
+    <script src="sponsorPanel.js"></script>
+
+    <script>
+
+        let lElements = document.getElementsByTagName('somepanel');
+        let lSomePanel = SponsorPanel(lElements);
+        lSomePanel.render();
+
+        lElements = document.getElementsByTagName('sponsorpanel');
+        let lConfig= {
+            imgpath:"../img/portfolio/clients",
+            header:true,
+            tooltip:false
+        };
+        let lSponsorPanel = SponsorPanel(lElements,lConfig);
+        lSponsorPanel.render();
+
+        lElements = document.getElementsByTagName('techpanel');
+        lConfig= {
+            imgpath:"../img/portfolio/technologies",
+            header:false,
+            height:32
+        };
+        let lTechPanel = SponsorPanel(lElements,lConfig);
+        lTechPanel.render();
+    </script>
+
+</body>
+
+</html>

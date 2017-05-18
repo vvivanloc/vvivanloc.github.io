@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <!-- Bootstrap Core CSS -->
+  <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../dist/css/custom.min.css" rel="stylesheet">
+
+
+  <!-- jQuery -->
+  <script src="../../vendor/jquery/jquery.min.js"></script>
+
+  <!-- Bootstrap Core  -->
+  <script src="../../vendor/bootstrap/js/bootstrap.js"></script>
+
+  <script src="thirdparty/reactStub.js"></script>
+</head>
+
+<body>
+  <h1>badge tests</h1>
+  <div>
+  <rank>ingénieur développement</rank>
+  <team>3</team>
+  <duration>De jan 1980 à déc 1981</duration>
+  
+  </div>
+  <div style="margin-top:10px">
+  <result>More potatoes</result>
+  </div>
+
+
+  <script src="badge.js"></script>
+
+  <script>
+    let lElements = document.getElementsByTagName('rank');
+    let lConfig = {
+      label: "<img src='../img/portfolio/badges/rank.png'></img>",
+      tooltip_pre: "Poste"
+    };
+    var lRankBuilder = Badge(lElements, lConfig);
+    lRankBuilder.render();
+
+    lElements = document.getElementsByTagName('team');
+    lConfig = {
+      label: "<img src='../img/portfolio/badges/team.png'></img>",
+      tooltip_pre: "Equipe de",
+      tooltip_post: "personne"
+    };
+    var lTeamBuilder = Badge(lElements, lConfig);
+    lTeamBuilder.render();
+
+    lElements = document.getElementsByTagName('duration');
+    lConfig = {
+      label: "<img src='../img/portfolio/badges/clock.png'></img>",
+      tooltip_pre: "Date: "
+    };
+    var lTeamBuilder = Badge(lElements, lConfig);
+    lTeamBuilder.render();
+
+    lElements = document.getElementsByTagName('result');
+    lConfig = {
+      label: "<img src='../img/portfolio/badges/medal.png'></img>",
+      tooltip_pre: "Résultat"
+    };
+    var lResultBuilder = Badge(lElements, lConfig);
+    lResultBuilder.render();
+
+  </script>
+
+</body>

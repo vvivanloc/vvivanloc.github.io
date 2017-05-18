@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../dist/css/custom.min.css" rel="stylesheet">
+
+
+    <!-- jQuery -->
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core  -->
+    <script src="../../vendor/bootstrap/js/bootstrap.js"></script>
+
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+
+    <script src="thirdparty/reactStub.js"></script>
+    <script src="thirdparty/uuid.js"></script>
+
+</head>
+
+<body id="page-top" class="index">
+
+
+
+    <section id="web">
+        <div class="container mid-height">
+            <div class="row">
+                <h3>Web</h3>
+
+                <jobinfobar data-rank="ing. dév. web frontend" data-date="De mars 1980 à juillet 1981" data-duration="8 mois" data-team="4" data-employer="vvivanloc"
+                    data-clients="openfeeder;signotheque">
+                </jobinfobar>
+
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <!-- Theme + custom scripts -->
+    <script src="badge.js"></script>
+    <script src="sponsorPanel.js"></script>
+    <script src="jobInfoBar.js"></script>
+
+    <script>
+        let lElements = document.getElementsByTagName('jobinfobar');
+        let lJobInfoBarBuilder = JobInfoBar(lElements);
+        lJobInfoBarBuilder.render();
+
+        // badges
+        lElements = document.getElementsByTagName('rank');
+        let lConfig = {
+            label: "<img src='../img/portfolio/badges/rank.png'></img>",
+            tooltip_pre: "Poste"
+        };
+        var lRankBuilder = Badge(lElements, lConfig);
+        lRankBuilder.render();
+
+        lElements = document.getElementsByTagName('team');
+        lConfig = {
+            label: "<img src='../img/portfolio/badges/team.png'></img>",
+            tooltip_pre: "Equipe de",
+            tooltip_post: "personne"
+        };
+        var lTeamBuilder = Badge(lElements, lConfig);
+        lTeamBuilder.render();
+
+        lElements = document.getElementsByTagName('duration');
+        lConfig = {
+            label: "<img src='../img/portfolio/badges/clock.png'></img>",
+            tooltip_pre: "Date: "
+        };
+        var lTeamBuilder = Badge(lElements, lConfig);
+        lTeamBuilder.render();
+
+        lElements = document.getElementsByTagName('result');
+        lConfig = {
+            label: "<img src='../img/portfolio/badges/medal.png'></img>",
+            tooltip_pre: "Résultat"
+        };
+        var lResultBuilder = Badge(lElements, lConfig);
+        lResultBuilder.render();
+
+        //client panel
+        lElements = document.getElementsByTagName('sponsorpanel');
+        lConfig = {
+            imgpath: "../img/portfolio/clients",
+            header: true,
+            tooltip: false
+        };
+        let lSponsorPanel = SponsorPanel(lElements, lConfig);
+        lSponsorPanel.render();
+
+    </script>
+
+</body>
+
+</html>

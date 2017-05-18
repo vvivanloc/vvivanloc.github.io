@@ -12,6 +12,8 @@ var path = require('path');
 var concat = require('gulp-concat'); 
 var babel = require('gulp-babel');
 
+// prevent gulp watcher from ending on error
+var plumber = require('gulp-plumber');
 
 // Set the banner content
 var banner = ['/*!\n',
@@ -26,6 +28,7 @@ var banner = ['/*!\n',
 // Compile LESS files from /less into /css
 gulp.task('less', function() {
     return gulp.src(['less/freelancer.less','less/custom.less'])
+        .pipe(plumber())
         .pipe(less())
         .pipe(header(banner, { pkg: pkg }))
         .pipe(gulp.dest('css'))
@@ -83,14 +86,15 @@ gulp.task('ts', function () {
 
 //jsx to js
 gulp.task("jsx", function(){
-    return gulp.src("jsx/*.jsx").
-        pipe(sourcemaps.init()).
-        pipe(babel({
+    return gulp.src("jsx/*.jsx")
+        .pipe(plumber())
+        .pipe(sourcemaps.init())
+        .pipe(babel({
             plugins: ['transform-react-jsx'],
             presets: ["react-native"]
-        })).
-        pipe(sourcemaps.write('.')).
-        pipe(gulp.dest("jsx"));
+        }))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest("jsx"));
 });
 
 // Minify JS
@@ -106,7 +110,7 @@ gulp.task('minify-js', function() {
         }))
 });
 
-// Minify JS
+// Concat without minification JS
 gulp.task('concat-js', function() {
     return gulp.src(['js/*.js','ts/*.js','jsx/*.js','!jsx/hello.js'])
         .pipe(concat('scripts.js'))
@@ -149,18 +153,18 @@ gulp.task('browserSync', function() {
         server: {
             baseDir: ''
         },
+        //open: false,
+        browser: "google chrome"
     })
 })
 
 // Dev task with browserSync
 gulp.task('dev', ['browserSync', 'less', 'minify-css', 'jsx', 'concat-js'], function() {
-    gulp.watch('less/*.less', ['less']);
+    gulp.watch('less/*.less', ['less','minify-css']);
     gulp.watch('css/*.css', ['minify-css']);
-    gulp.watch('js/*.js', ['minify-js']);
-    gulp.watch('ts/*.ts', ['minify-js']);
     gulp.watch('jsx/*.jsx', ['jsx']);
+    gulp.watch(['jsx/*.js','js/*.js','ts/*.ts'],['minify-js','concat-js']);
     // Reloads the browser whenever HTML or JS files change
-    gulp.watch('*.html', browserSync.reload);
-    gulp.watch('jsx/*.html', browserSync.reload);
-    gulp.watch('js/**/*.js', browserSync.reload);
+    gulp.watch(['*.html','jsx/*.html','js/**/*.js'], browserSync.reload);
+    
 });

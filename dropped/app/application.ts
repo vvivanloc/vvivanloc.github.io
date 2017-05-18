@@ -119,7 +119,7 @@ class Application {
         let light;
         this.mScene.add(new THREE.AmbientLight(0x666666));
 
-        light = new THREE.DirectionalLight(0xffffff, 1.75);
+        light = new THREE.DirectionalLight(0xaaaabb, 1.75);
         let d = 20;
 
         light.position.set(d, d, d);
@@ -152,7 +152,7 @@ class Application {
             this.mRenderer = new THREE.WebGLRenderer({ antialias: true });
         }
         this.mRenderer.setSize(this.mDOMContainer.clientWidth, this.mDOMContainer.clientHeight);
-        this.mRenderer.setClearColor(this.mScene.fog.color);
+        this.mRenderer.setClearColor(new THREE.Color("#fff")/*this.mScene.fog.color*/);
 
         this.mDOMContainer.appendChild(this.mRenderer.domElement);
 

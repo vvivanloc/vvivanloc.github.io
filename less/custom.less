@@ -1,6 +1,5 @@
-
 .portal {
-    height:640px;
+    height: 640px;
     overflow-y: hidden;
     touch-action: none;
 }
@@ -14,11 +13,10 @@
 
 .floatleft {
     float: left;
-
 }
 
 .floatright {
-    float: right;    
+    float: right;
 }
 
 canvas {
@@ -29,53 +27,253 @@ canvas {
     padding-right: 50px;
 }
 
-/* fix ugly Bootstrap fix causing scrolling mess+nav button position error in mobile definition */
-/* https://github.com/twbs/bootstrap/issues/10875 */
-.row {
-  margin-left: 0px !important;
-  margin-right: 0px !important;
-}
 
+/* fix ugly Bootstrap fix causing scrolling mess+nav button position error in mobile definition */
+
+
+/* https://github.com/twbs/bootstrap/issues/10875 */
+
+.row {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
 
 .bigbtn {
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2) !important;
     background-image: none !important;
     background-color: #fff !important;
-  
     padding: 6px 12px;
     margin-bottom: 0;
     font-size: 14px;
     font-weight: 400;
     line-height: 1.42857143;
-
-    vertical-align: middle; 
+    vertical-align: middle;
     -ms-touch-action: manipulation;
     touch-action: manipulation;
     cursor: pointer;
-  
     border: 1px solid transparent;
     border-radius: 4px;
-        
 }
 
 .bigbtn:active,
 .bigbtn-default:hover {
-  box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.2)  !important;
-  transition-delay: 0s  !important;
-  background-image: none !important;
-  background-color: #fff !important;
+    box-shadow: 0 9px 17px 0 rgba(0, 0, 0, 0.2) !important;
+    transition-delay: 0s !important;
+    background-image: none !important;
+    background-color: #fff !important;
 }
 
 .bigbtn-default {
-  filter: none;
-  border: 1px solid #ddd !important;
-  background-image: none !important;
-  background-color: #fff !important;
-  display: table;
+    filter: none;
+    border: 1px solid #ddd !important;
+    background-image: none !important;
+    background-color: #fff !important;
+    display: table;
 }
 
-.paddingtop {
-    padding-top: 15px;
+@media (max-width: 766px) {
+    .paddingtop {
+        padding-top: 3px;
+    }
+}
+
+@media(min-width:767px) {
+    .paddingtop {
+        padding-top: 15px;
+    }
+}
+
+.paddingminiright {
+    padding-right: 15px;
+}
+
+.nav-pills>li.active>a {
+    background-color: #345979 !important;
+}
+
+@media(min-width:767px) {
+    .nav-pills>li+li {
+        padding-left: 10px; // 2px by default
+    }
+}
+
+.nav-pills>li>a {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2) !important;
+}
+
+.nav-pills>li>a:hover {
+    box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.2) !important;
+    transition-delay: 0s !important;
+}
+
+.carousel-control {
+    filter: alpha(opacity=15);
+    opacity: .15;
+}
+
+.carousel-control>div {
+    height: 100%;
+}
+
+.vertical-center {
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.horizontal-center {
+    text-align: center;
+    width: 100%;
+}
+
+@media(min-width:767px) {
+    .carousel-control {
+        font-size: 7em !important;
+    }
+    .img-responsive {
+        max-width: 512px !important;
+    }
+    .logo-header>img {
+        height: 32px;
+    }
+}
+
+@media(max-width:766px) {
+    .carousel-control {
+        font-size: 5em !important;
+    }
+    .logo-header>img {
+        height: 24px;
+    }
+}
+
+@media(min-width:1000px) {
+    .logo-header>span {
+        display: inline;
+    }
+}
+
+@media(max-width:999px) {
+    .logo-header>span {
+        display: none;
+    }
+}
+
+@media(max-width:766px) {
+    .logo-header>span {
+        display: inline;
+    }
+}
+
+.logo-header>img {
+    display: inline;
+    margin-right: 16px;
+    vertical-align: text-top;
+}
+
+.logo-footer {
+    width: 93px;
+    margin-bottom: 25px;
+}
+
+.flipcard .paddingleft {
+    padding-left: 20px;
+}
+
+.jobinfobar>span+span {
+    margin-left: 6px;
+}
+
+.minibtn {
+    margin-bottom: 5px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2) !important;
+    float: right;
+    background-color: #fff!important;
+    padding: 0px 12px;
+    margin-bottom: 6px;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    height: 28px;
+}
+
+.overlap-lowerright {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.panel {
+    margin-bottom: 0px !important;
+}
+
+.minibtn-plus {
+    background-image: url('../../img/button/plus.png');
+}
+
+.minibtn-minus {
+    background-image: url('../../img/button/minus.png');
+}
+
+.minibtn-tip {
+    background-image: url('../../img/button/tip.png');
+}
+
+.minibtn:hover,
+.minibtn:active {
+    background-color: #eee !important;
+}
+
+
+/** fix image ratio container */
+
+
+/* see http://www.minimit.com/articles/tips-resources/css-aspect-ratio-to-have-images-of-same-height
+from http://stackoverflow.com/questions/1495407/maintain-the-aspect-ratio-of-a-div-with-css */
+
+.item-image {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 50%;
+    /* here the desired aspect ratio */
+    max-height: 320px;
+}
+
+.item-image img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-height: 320px;
+}
+
+.item-image .embed-responsive {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.front {
+    min-height: 520px;
+}
+
+.overlap-lowerleft {
+    position: absolute;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.overlap-lowerleft-tooltip {
+    position: absolute;
+    margin-left: 20px;
+    bottom: -145px;
 }

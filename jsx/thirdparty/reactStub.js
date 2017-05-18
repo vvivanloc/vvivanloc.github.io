@@ -35,7 +35,10 @@ var React = {
                 }
             } else {
                 if (isString(pChild)) {
-                    pElement.appendChild(document.createTextNode(pChild.toString()));
+                    var lChildString = pChild.toString();
+                    if (lChildString!=="") {
+                        pElement.innerHTML=lChildString;
+                    } 
                 } else {
                     pElement.appendChild(pChild);
                 }

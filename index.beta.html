@@ -9,6 +9,14 @@
     <meta name="description" content="Vincent VIVANLOC website Vincent Vivanloc - ingéniérie R&D - optimisation de performances">
     <meta name="author" content="Vincent VIVANLOC">
 
+    <!--http://realfavicongenerator.net/-->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
     <title>Vincent Vivanloc - ingéniérie R&D - optimisation de performances</title>
 
     <!-- Bootstrap Core CSS -->
@@ -47,10 +55,13 @@
     <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
 
 
-    <script src="dropped/thirdparty/three/three.js"></script>
+    <script src="dropped/thirdparty/three/three.min.js"></script>
     <script src="dropped/thirdparty/three/Detector.js"></script>
     <script src="dropped/thirdparty/three/Projector.js"></script>
-    <script src="dropped/thirdparty/cannon/cannon.js"></script>
+    <script src="dropped/thirdparty/cannon/cannon.min.js"></script>
+
+    <script src="jsx/thirdparty/reactStub.js"></script>
+    <script src="jsx/thirdparty/uuid.js"></script>
 
     <script src="dropped/thirdparty/require/require.min.js"></script>
 </head>
@@ -65,7 +76,9 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Basculer la navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">V. Vivanloc</a>
+                <a class="navbar-brand" href="#page-top">
+                    <div class="logo-header"><img src="img/logo_white_export.svg"></img><span>V. Vivanloc</span></div>
+                </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -106,8 +119,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive" src="img/profile.png" alt="">
+                    <img class="img-responsive" src="img/logo_white_export.svg" alt="">
                     <div class="intro-text">
+
                         <span class="name">V. Vivanloc</span>
                         <hr class="star-light">
                         <span class="skills">ingéniérie R&D - optimisation de performances - développement d'applications web & desktop</span>
@@ -133,7 +147,15 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div id="portalinput" class="portal"></div>
+            <div id="portalinput" class="portal hidden">
+                
+                <div id="portalinput_tooltip_button" class="minibtn minibtn-tip overlap-lowerleft">
+                </div>
+                <div class="panel panel-default overlap-lowerleft-tooltip hidden">
+                    <img id="portalinput_tooltip_img" src="img/tooltip/0.png" class="panel-body" />
+                </div>
+                
+            </div>
         </div>
     </div>
 
@@ -145,44 +167,93 @@
                 <h3>Web</h3>
 
 
-                <div class="col-sm-8">
+                <div class="col-sm-12 col-md-9">
                     <div class="flipcard">
-                        <div class="front bigbtn bigbtn-default">
-                            <div>
-                                <img class="img-responsive center-block" src="img/portfolio/web/tablet3DJuumpInfinite.png" alt="3DJuumpInfiniteWeb"></img>
-                            </div>
-                            <div class="paddingtop">
-                                One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin.
-                                He lay on his armour-like back, and if he lifted his head a little he could see his brown
-                                belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able
-                                to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared
-                                with the size of the rest of him, waved about helplessly as he looked. "What's happened to
-                                me? " he thought. It wasn't a dream.
-                            </div>
-                        </div>
-                        <div class="back">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title"><span>Plop</span><span class="pull-right">&times;</span></h4>
-                                </div>
-                                <div class="panel-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                                    <p>Nullam malesuada <a target="_blank" href="http://fr.lipsum.com/feed/html">pellentesque</a>                                        lacus at convallis. Nam quam tellus, porttitor non nisl at, congue viverra sapien.
-                                        Nunc suscipit, dui eu efficitur mollis, tellus mauris feugiat purus, id rutrum erat
-                                        turpis ac quam. Ut convallis, lorem sit amet elementum malesuada, mauris massa maximus
-                                        tortor, sit amet interdum augue elit auctor arcu. Curabitur semper id eros ac vestibulum.
-                                        Pellentesque pretium, mi at aliquet varius, diam nibh semper elit, eget lacinia erat
-                                        enim et mi. Ut posuere condimentum lacus, consectetur consectetur enim sollicitudin
-                                        volutpat.</p>
+                        <flipcardfront data-imgsrc="img/portfolio/web/tablet3DJuumpInfinite.jpg" data-imgalt="3DJuumpInfiniteWeb">
+                            <ul>
+                                <li>Sites web</li>
 
-                                </div>
-                            </div>
-                        </div>
+                                <li>Applications web</li>
+                                <ul>
+                                    <li>Mini-jeux sur iPad et PC</li>
+                                    <li>Carte interactive 2D</li>
+                                    <li>Moteur 3D WebGL haute performance sur PC, tablette et mobile</li>
+                                </ul>
+                            </ul>
+                        </flipcardfront>
+                        <flipcardback>
+
+                            <tab data-label="Sites web" data-imgpath="img/portfolio/web" data-imgsrcs="openfeeder.jpg;signotheque.jpg;vvivanloc.jpg;vvivanloc_makingof.jpg">
+
+                                <jobinfobar data-rank="ing. dév. web frontend" data-date="De mars à mai 2017" data-duration="3 mois" data-team="2" data-employer="vvivanloc"
+                                    data-clients="openfeeder;signotheque">
+                                </jobinfobar>
+
+                                <ul class="paddingleft">
+                                    <li>Réalisation de sites web pour des projets <a href="https://vvivanloc.github.io" target="_blank">personnels</a>                                        et associatifs (<a href="https://openfeeder.github.io" target="_blank">OpenFeeder</a>                                        et <a href="https://signotheque.github.io/arboresign/presentation/#/" target="_blank">Signotheque</a>)</li>
+                                    <techpanel data-names="html;bootstrap;typescript;jsx;gulp;vscode;npm;git;threejs;cannonjs;blender;gimp;inkscape" />
+                                </ul>
+                                
+
+
+                            </tab>
+                            <tab data-label="Mini jeux" data-imgpath="img/portfolio/web" data-imgsrcs="monsterfactory03.jpg;chess0.jpg;chess1.jpg;paintyourmonster04.jpg">
+
+                                <jobinfobar data-rank="ing. dév. web" data-date="De oct 2013 à juil 2014" data-duration="10 mois" data-team="10" data-employer="realfusio"
+                                    data-clients="citeespace;museoakropolis">
+                                </jobinfobar>
+
+                                <ul class="paddingleft">
+                                    <li><b>Contexte : </b>Projet européen FP7 <a href="http://www.chessexperience.eu/">CHESS, Cultural Heritage Experiences thru Social
+                                        & Storytelling</a></li>
+                                    <li>Mini jeux iPad et PC intégrés à la chaine de production multimédia <a href="http://inscape3d.com/">Inscape</a>                                        de Diginext</li>
+                                    <li><b>Résultats : </b>En test à la Cité de l’Espace et validation du projet par l’Europe</li>
+
+                                    <techpanel data-names="html;css;jquery;zepto;inkscape;svg" />
+                                </ul>
+
+
+                                
+                                
+                            </tab>
+                            <tab data-label="Carte&nbsp;interactive" data-imgpath="img/portfolio/web" data-imgsrcs="3DJuumpInfiniteWeb4.jpg">
+                                <jobinfobar data-rank="ing. web R&D et lead technique" data-date="De déc 2016 à janv 2017" data-duration="1 mois" data-team="1"
+                                    data-employer="realfusio">
+                                </jobinfobar>
+
+                                <ul>
+                                    <li><b>Contexte : </b>Prototypage autour de 3DJuump Infinite en technologies Web</li>
+                                    <li>Carte interactive 2D de la maquette numérique</li>
+                                     <techpanel data-names="typescript;html;less;leaflet;webgl;vscode;webpack;git" />
+                                </ul>
+
+                               
+                            </tab>
+                            <tab data-label="Moteur haute&nbsp;performance" data-imgpath="img/portfolio/web" data-imgsrcs="3DJuumpInfiniteWeb0.jpg;3DJuumpInfiniteWeb1.jpg;3DJuumpInfiniteWeb2.jpg;3DJuumpInfiniteWeb3.jpg"
+                                data-active>
+                                <jobinfobar data-rank="ing. web 3D R&D et lead technique" data-date="De fév 2016 à fév 2017" data-duration="1 an" data-team="1"
+                                    data-employer="realfusio">
+                                </jobinfobar>
+
+                                <ul>
+
+                                    <li><b>Contexte : </b> Etude de faisabilité du portage du moteur 3D de 3DJuump Infinite en
+                                        technologies Web</li>
+                                    <li>Moteur d’affichage 3D de maquette numérique haute performance sur un navigateur web PC
+                                        et mobile</li>
+                                    <li><b>Résultat : </b>Validation de la faisabilité (performance, débit, consommation électrique),
+                                        fonctionne sur PC et mobile</li>
+                                        <techpanel data-names="typescript;html;less;threejs;webgl;vscode;webpack;git" />
+                                </ul>
+                                
+                            </tab>
+
+                        </flipcardback>
                     </div>
                 </div>
 
 
-                <div class="col-sm-4 hidden-xs portal-right" id="portaloutput">
+                <div class="col-md-3 hidden-xs hidden-sm portal-right" id="portaloutput">
                     <canvas id="portaloutputcanvas" width="300" height="590" style="width: 300px; height: 590px;"></canvas>
                 </div>
 
@@ -195,12 +266,71 @@
         <div class="container mid-height">
             <div class="row">
                 <h3>Maquette numérique</h3>
-                <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                    <div class="col-sm-6 portfolio-item">
-                        <img src="img/portfolio/dmu/3DJuumpInfinite.png" class="img-responsive" alt="3DJuumpInfinite">
+
+                <div class="col-sm-12 col-md-9">
+                    <div class="flipcard">
+                        <flipcardfront data-imgsrc="img/portfolio/dmu/VisDMUthumb.jpg" data-imgalt="3DJuumpInfinite">
+                            <ul>
+                                <li>Moteurs adaptés à l'affichage de maquettes numériques directement issues du <a href="#" data-toggle="tooltip"
+                                        data-html=true title="Plusieurs millions de pièces et milliards de triangles.<br>Tous les pièces sont conservées.">bureau d'étude</a>
+
+                                    <li>Tous les objets de la maquette sont conservés et peuvent être affichés sur un <a href="#"
+                                            data-toggle="tooltip" title="Budget d'affichage adapté en fonction de la machine">PC d'entrée de gamme</a>                                        </li>
+
+                                    <li>Cas d'utilisation : phase de conception, revue de projet, production documentaire
+                                    </li>
+                            </ul>
+                        </flipcardfront>
+                        <flipcardback>
+                            <tab data-label="VisDMU" data-imgpath="../img/portfolio/dmu" data-imgsrcs="VisDMU.jpg;cabine7.jpg;hnve1_8.jpg;image_02.jpg;sortieECS_GPU.jpg;hnve1_3.jpg;interieur.jpg;hnve1_5.jpg;visdmu_shaders.jpg"
+                                data-active>
+                                <jobinfobar data-rank="ing. R&D, développeur sénior et support avant-vente" data-date="De mars 2008 à juil 2013" data-duration="5 ans"
+                                    data-team="10" data-employer="realfusio" data-clients="airbus">
+                                </jobinfobar>
+                                <ul>
+
+                                    <li><b>Contexte : </b>création du produit VisDMU pour l'exploitation de la maquette numérique
+                                        complète d’un A350/A380</li>
+                                    <li>Réalisation du moteur de rendu haute performance pour maquette numérique massive</li>
+                                    <li>Création d’outils d’analyse : revue de projet, clash, suivi des modifications
+                                    </li>
+                                    <li><b>Résultats</b>
+                                        <ul>
+                                            <li>Contribution et rédaction de 3 brevets FR29742{
+                                                <a target="_blank" href="http://worldwide.espacenet.com/publicationDetails/biblio?DB=worldwide.espacenet.com&II=0&ND=3&adjacent=true&locale=en_EP&FT=D&date=20121019&CC=FR&NR=2974213A1&KC=A1">13</a>,
+                                                <a target="_blank" href="http://worldwide.espacenet.com/publicationDetails/biblio?DB=worldwide.espacenet.com&II=0&ND=3&adjacent=true&locale=en_EP&FT=D&date=20121019&CC=FR&NR=2974214A1&KC=A1">14</a>,
+                                                <a target="_blank" href="http://worldwide.espacenet.com/publicationDetails/biblio?DB=worldwide.espacenet.com&II=0&ND=3&adjacent=true&locale=en_EP&FT=D&date=20121019&CC=FR&NR=2974215A1&KC=A1">15</a>                                                }-A1
+                                            </li>
+                                            <li>Produit utilisé par Airbus et AKKA Ekis → gain de x2 à x3 pour la production
+                                                de données Aircraft Visit</li>
+                                            <li>Intégration chez Airbus (Training & Support, Defence & Space, Helicopters), AKKA,
+                                                Alstom, DCNS, PSA et Renault</li>
+                                        </ul>
+                                    </li>
+                                    <techpanel data-names="c++;opengl;qt;visualstudio;svn;doxygen" />
+                                </ul>
+                                
+                            </tab>
+                            <tab data-label="3DJuump Infinite" data-imgpath="../img/portfolio/dmu" data-imgsrcs="3DJuumpInfinite.jpg;3DJuI2.jpg;3DJuI3.jpg">
+                                <jobinfobar data-rank="ing. dév & support" data-date="De fév 2015 à jan 2016" data-duration="1 an" data-team="3" data-employer="realfusio"
+                                    data-clients="alstom">
+                                </jobinfobar>
+                                <ul>
+                                    <li><b>Contexte : </b> Support avant-vente du produit <a href="http://www.realfusio.com/produits/" target="_blank">3DJuump Infinite</a> pour le compte Alstom
+                                        Transport
+                                    </li>
+                                    <li>Evolutions produit (connecteur Enovia VPM/Oracle, outil d’édition de présentations),
+                                        assistance technique et installation sur serveurs de production</li>
+                                    <li><b>Résultat : </b> Achat de licences par Alstom Transport</li>
+                                    <techpanel data-names="python;pycharm;sphinx;c++;qt;visualstudio" />
+                                </ul>
+                                
+                            </tab>
+                        </flipcardback>
                     </div>
-                </a>
-                <div class="col-sm-1 hidden-xs portal-right">
+                </div>
+
+                <div class="col-md-3 hidden-xs hidden-sm portal-right">
                 </div>
 
             </div>
@@ -211,12 +341,63 @@
         <div class="container mid-height">
             <div class="row">
                 <h3>Optimisation</h3>
-                <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
-                    <div class="col-sm-6 portfolio-item">
-                        <img src="img/portfolio/optim/thermica.jpg" class="img-responsive" alt="Aircraft Visit">
+
+                <div class="col-sm-12 col-md-9">
+                    <div class="flipcard">
+                        <flipcardfront data-imgsrc="img/portfolio/optim/thermica.jpg" data-imgalt="Optimisation">
+                            <ul>
+                                <li>Augmentation des performances de moteurs 3D existants</li>
+                                <li>Ajout de fonctionnalités à un moteur 3D (animation, rendu et gestion de périphériques VR)
+                                </li>
+                            </ul>
+                        </flipcardfront>
+                        <flipcardback>
+                            <tab data-label="Systema" data-imgpath="../img/portfolio/optim" data-imgsrcs="thermica2.jpg;thermica.jpg" data-active>
+                                <jobinfobar data-rank="ing. expertise rendu 3D" data-date="2012" data-duration="2 mois" data-team="2" data-employer="realfusio"
+                                    data-clients="airbus">
+                                </jobinfobar>
+                                <ul>
+
+                                    <li>Amélioration des performances du moteur 3D de <a href="http://www.systema.airbusdefenceandspace.com/" target="_blank">Systema</a>, logiciel Airbus D&S de simulation
+                                        numérique
+                                    </li>
+                                    <li><b>Résultat : </b>x20 fréq. d’affichage (image/s)</li>
+                                    <techpanel data-names="c++;gcc;gdb;codeXL;openscenegraph" />
+                                </ul>
+                                
+                            </tab>
+                            <tab data-label="Moteur REAL&nbsp;FUSIO" data-imgpath="../img/portfolio/optim" data-imgsrcs="0.jpg;rfengine001.jpg;rfengine002.jpg;rfengine003.jpg;rfengine004.jpg;musee.jpg">
+                                <jobinfobar data-rank="ing. expertise rendu 3D" data-duration="De 2008 à 2012" data-duration="1 an" data-team="5" data-employer="realfusio">
+                                </jobinfobar>
+                                <ul>
+                                    <li>Evolution du moteur 3D REAL FUSIO : pipeline de rendu différé, exporteur 3DSMax, éclairage,
+                                        animation de personnage, casque réalité virtuelle et écran auto-stéréoscopique</li>
+                                        <techpanel data-names="c++;visualstudio;opengl;glsl;svn;cmake" />
+                                </ul>
+                                
+                            </tab>
+
+                            <tab data-label="Virtual Maintenance Trainer" data-imgpath="../img/portfolio/optim" data-imgsrcs="airbustrain1.jpg;airbustrain2.jpg;avisit.jpg;avisit5.jpg;avisit6.jpg;avisitairbus.jpg;vmt1.jpg">
+
+                                <jobinfobar data-rank="ing. expertise rendu 3D" data-date="2008" data-duration="4 mois" data-team="3" data-employer="realfusio"
+                                    data-clients="airbus">
+                                </jobinfobar>
+                                <ul>
+                                    <li> Adaptation sur portable certifié Airbus pour <a target="_blank" href="http://www.airbus.com/support-services/services/training/maintenance/">Virtual Maintenance Trainer</a>, logiciel de
+                                        formation à la maintenance par l’écriture de shaders adaptatif et haute performance
+                                        <li><b>Résultat : </b>Validation par Airbus sur son matériel dédié et x2,5 fréq. d’affichage
+                                            (image/s)
+                                        </li>
+                                        <techpanel data-names="c++;visualstudio;arb;redway3D;svn" />
+                                </ul>
+                                
+                            </tab>
+
+                        </flipcardback>
                     </div>
-                </a>
-                <div class="col-sm-1 hidden-xs portal-right">
+                </div>
+
+                <div class="col-md-3 hidden-xs hidden-sm portal-right">
                 </div>
             </div>
         </div>
@@ -225,13 +406,72 @@
     <section id="researchdevelopment">
         <div class="container high-height">
             <div class="row">
-                <h3>Recherche & développement</h3>
-                <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
-                    <div class="col-sm-6 portfolio-item">
-                        <img src="img/portfolio/rd/gearbox.png" class="img-responsive" alt="SVGtracing">
+                <h3>Expertise et recherche & développement</h3>
+
+                <div class="col-sm-12 col-md-9">
+                    <div class="flipcard">
+                        <flipcardfront data-imgsrc="img/portfolio/rd/gearbox.jpg" data-imgalt="R et D">
+                            <ul>
+                                <li>Amélioration des procédés d’exploitation de la maquette numérique</li>
+                                <li>Aide à la valorisation de l'Internet par satellite</li>
+                            </ul>
+                        </flipcardfront>
+                        <flipcardback>
+                            <tab data-label="Illustration assistée" data-imgpath="../img/portfolio/rd" data-imgsrcs="reve1.jpg;reve2.jpg;reve3.jpg;tie.jpg;aparelhoDivisorSimpleThumb.svg.jpg;gearbox.jpg;testcouleurs.jpg;steam_machine.svg.jpg">
+                                <jobinfobar data-rank="ing. R&D" data-date="2009 et 2014" data-duration="1 an" data-team="3" data-employer="realfusio" data-clients="akka">
+                                </jobinfobar>
+                                <ul>
+                                    <li>Génération automatique d’illustrations vectorielles optimisées depuis fichiers CAO
+                                    </li>
+                                    <li>Calcul en précision fixe et ajustement par arc de cercle, ellipse et courbe de Bézier,
+                                        analyse d’image</li>
+                                        <techpanel data-names="c++;visualstudio;opengl;svg" />
+                                </ul>
+                                
+                            </tab>
+                            <tab data-label="Expertise" data-imgpath="../img/portfolio/rd" data-imgsrcs="Eurocopter_Colibri_750pix.jpg;gazelle.jpg;ipc.jpg">
+                                <jobinfobar data-rank="ing. expertise maquette numérique" data-date="De 2008 à 2014" data-duration="6 mois" data-team="3"
+                                    data-employer="realfusio" data-clients="airbus;cnes">
+                                </jobinfobar>
+                                <ul>
+                                    <li>
+                                        Etude sur le catalogue illustré nouvelle génération pour Airbus Helicopters, gestion de configuration et des évolutions,
+                                        rédaction d’un rapport de recommandations
+                                    </li>
+
+                                    <li>
+                                        Réponses techniques à appels d’offre sur de la gestion, du stockage et de la production de la maquette numérique
+                                    </li>
+                                    <techpanel data-names="word;powerpoint;dictionary" />
+                                </ul>
+                            </tab>
+                            <tab data-label="Internet par satellite" data-imgpath="../img/portfolio/rd" data-imgsrcs="0.jpg;satpresenter.jpg">
+                                <jobinfobar data-rank="ing. dév. couche basse réseau" data-date="De déc 2010 à mars 2011" data-duration="4 mois" data-team="2"
+                                    data-employer="realfusio" data-clients="cnes">
+                                </jobinfobar>
+                                <ul>
+
+                                    <li><b>Contexte : </b>Valoriser Internet par satellite</li>
+                                    <li> Librairie de diffusion de vidéos : multicast IPv4, transfert
+                                        interruptible, correction d’erreur FEC, chiffrement </li>
+                                    
+                                    </li>
+                                    <li> Produit de télé-formation (salle de classe virtuelle) : réalisation de modules de discussion,
+                                        tableau blanc, diaporama</li>
+                                        <li><b>Résultats : </b>Utilisation dans un prototype de diffusion de vidéos en zone
+                                        blanche et mise en place de la chaine de transmission satellite sur valise</li>
+                                        <techpanel data-names="c++;gcc;debian packaging" />
+                                </ul>
+                                
+                            </tab>
+
+
+
+                        </flipcardback>
                     </div>
-                </a>
-                <div class="col-sm-1 hidden-xs portal-right">
+                </div>
+
+                <div class="col-md-3 hidden-xs hidden-sm portal-right">
                 </div>
             </div>
         </div>
@@ -243,6 +483,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
+                    <img class="img-center logo-footer" src="img/profile.png"></img>
                     <h2>A propos</h2>
                     <hr class="star-light">
                 </div>
@@ -250,9 +491,8 @@
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2">
                     <p><span data-toggle="tooltip" title="France" id="greeting">Bonjour !</span></p>
-                    <p>Vous avez une idée à concrétiser ? Après un état de l'art, je vous propose différentes solutions techniques.
-                        Je transforme alors votre idée en prototype avec la solution technique choisie.</p>
-                    <p>Je peux aussi optimiser les performances de votre application existante, web ou native.</p>
+                    <p>Une idée à concrétiser ? Je la transforme en prototype avec la solution technique que vous avez choisie.
+                        Je peux aussi optimiser les performances de votre application existante, web ou native.</p>
                 </div>
                 <div class="col-lg-4">
                     <p>J'ai 9 ans d'expérience dans la création de moteurs 3D qui affichent une petite théière ou un avion entier.
@@ -273,6 +513,7 @@
         <div class="footer-above">
             <div class="container">
                 <div class="row">
+
                     <div class="footer-col col-md-4">
                         <h3>Lieu</h3>
                         <p>Toulouse, France</p>
@@ -316,46 +557,17 @@
     </footer>
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+    <!--<div class="scroll-top page-scroll hidden-lg hidden-md">
         <a class="btn btn-primary" href="#page-top">
             <i class="fa fa-chevron-up"></i>
         </a>
-    </div>
-
-
-
-
-    <!-- Portfolio Modals -->
-    <div class="portfolio-modal modal fade" id="portfolioModalWeb" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Web</h2>
-                            <hr class="star-primary">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set
-                                by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download
-                                their free set with 16 icons, or you can purchase the entire set with 146 icons for only
-                                $12!
-                            </p>
-
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </div>-->
 
 
     <!-- Theme + custom scripts -->
+
+
+
     <script src="dist/js/scripts.min.js"></script>
 
     <script>
@@ -368,7 +580,89 @@
 
 
         requirejs(["dropped/app_main.js"]);
+
+        // jsx components
+
+        // flip card
+        let lElements = document.getElementsByTagName('flipcardfront');
+        let lFlipcardFrontBuilder = FlipcardFront(lElements);
+        lFlipcardFrontBuilder.render();
+
+        lElements = document.getElementsByTagName('flipcardback');
+        let lFlipcardBackBuilder = FlipcardBack(lElements);
+        lFlipcardBackBuilder.render();
+
+        // carousel
+        lElements = document.getElementsByTagName('carousel');
+        let lCarouselBuilder = Carousel(lElements);
+        lCarouselBuilder.render();
+
+        // job info bar
+        lElements = document.getElementsByTagName('jobinfobar');
+        let lJobInfoBarBuilder = JobInfoBar(lElements);
+        lJobInfoBarBuilder.render();
+
+        // image panels
+        let lConfig = {
+            imgpath: "img/portfolio/clients",
+            tooltip: false
+        };
+
+        lElements = document.getElementsByTagName('sponsorpanel');
+        let lSponsorPanel = SponsorPanel(lElements, lConfig);
+        lSponsorPanel.render();
+
+        lConfig = {
+            imgpath: "img/portfolio/technologies",
+            tooltip: true,
+            height: 32,
+            marginbottom: "5px",
+            margintop: "10px"
+        };
+
+        lElements = document.getElementsByTagName('techpanel');
+        let lTechPanel = SponsorPanel(lElements, lConfig);
+        lTechPanel.render();
+
+        // badges
+        lElements = document.getElementsByTagName('rank');
+        lConfig = {
+            label: "<img src='../img/portfolio/badges/rank.png'></img>",
+            tooltip_pre: "Poste"
+        };
+        var lRankBuilder = Badge(lElements, lConfig);
+        lRankBuilder.render();
+
+        lElements = document.getElementsByTagName('team');
+        lConfig = {
+            label: "<img src='../img/portfolio/badges/team.png'></img>",
+            tooltip_pre: "Equipe de",
+            tooltip_post: "personne"
+        };
+        var lTeamBuilder = Badge(lElements, lConfig);
+        lTeamBuilder.render();
+
+        lElements = document.getElementsByTagName('duration');
+        lConfig = {
+            label: "<img src='../img/portfolio/badges/clock.png'></img>",
+            tooltip_pre: "Date: "
+        };
+        var lTeamBuilder = Badge(lElements, lConfig);
+        lTeamBuilder.render();
+
+        lElements = document.getElementsByTagName('result');
+        lConfig = {
+            label: "<img src='../img/portfolio/badges/medal.png'></img>",
+            tooltip_pre: "Résultat"
+        };
+        var lResultBuilder = Badge(lElements, lConfig);
+        lResultBuilder.render();
+
+        //flip
+        $(".flipcard").flip();
     </script>
+
+
 
 </body>
 

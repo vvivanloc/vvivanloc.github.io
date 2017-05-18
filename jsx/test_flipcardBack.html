@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../dist/css/custom.min.css" rel="stylesheet">
+
+
+    <!-- jQuery -->
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core  -->
+    <script src="../../vendor/bootstrap/js/bootstrap.js"></script>
+
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+
+    <script src="thirdparty/reactStub.js"></script>
+    <script src="thirdparty/uuid.js"></script>
+    <!--<script src="../dropped/thirdparty/require/require.min.js"></script>-->
+
+</head>
+
+<body id="page-top" class="index">
+
+
+
+    <section id="web">
+        <div class="container mid-height">
+            <div class="row">
+                <h3>Web</h3>
+
+                <div class="col-sm-8">
+                    <div class="flipcard">
+                        <div class="front panel" style="border:3px solid !important;">
+                            <h3>title</h3>
+                            <p>Some content.</p>
+                        </div>
+                        <flipcardback>
+                            <tab data-label="Moteur haute performance" data-imgpath="../img/portfolio" data-imgsrcs="web/3DJuumpInfiniteWeb0.png;web/chess0.png">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam malesuada <a target="_blank"
+                                    href="http://fr.lipsum.com/feed/html">pellentesque</a> lacus at convallis. Nam quam tellus,
+                                porttitor non nisl at, congue viverra sapien.
+                            </tab>
+                            <tab data-label="Carte interactive 2D">
+                                Nunc suscipit, dui eu efficitur mollis, tellus mauris feugiat purus, id rutrum erat turpis ac quam. Ut convallis, lorem sit
+                                amet elementum malesuada, mauris massa maximus tortor, sit amet interdum augue elit auctor
+                                arcu. Curabitur semper id eros ac vestibulum. Pellentesque pretium, mi at aliquet varius,
+                                diam nibh semper elit, eget lacinia erat enim et mi. Ut posuere condimentum lacus, consectetur
+                                consectetur enim sollicitudin volutpat.
+                            </tab>
+                        </flipcardback>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <!-- Theme + custom scripts -->
+
+    <script src="flipcardBack.js"></script>
+    <script src="carousel.js"></script>
+
+    <script>
+        let lElements = document.getElementsByTagName('flipcardback');
+        let lFlipcardBackBuilder = FlipcardBack(lElements);
+        lFlipcardBackBuilder.render();
+
+        lElements = document.getElementsByTagName('carousel');
+        let lCarouselBuilder = new Carousel(lElements);
+        lCarouselBuilder.render();
+        
+        //flip
+        $(".flipcard").flip();
+    </script>
+
+</body>
+
+</html>

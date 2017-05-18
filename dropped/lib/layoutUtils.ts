@@ -54,7 +54,7 @@ export class ScrollerSpy extends THREE.EventDispatcher {
         this.mSections = pElementIDs.map((item) => {
             let lElement = document.getElementById(item);
             if (!lElement) {
-                 console.error("cannot find HTMLElement by id :'" + item + "'");
+                console.error("cannot find HTMLElement by id :'" + item + "'");
             }
             return lElement
         });
@@ -63,16 +63,16 @@ export class ScrollerSpy extends THREE.EventDispatcher {
     fetchAt(pContainerTop: number, pOverlapFirst = 0, pOverlapLast = 0) {
 
         const lNbClientBoundingRects = this.mSections.length;
-        let lClientTops: Array<number> = this.mSections.map((item) => { return item.getBoundingClientRect().top; });
+        let lClientBoundingRects: Array<ClientRect> = this.mSections.map((item) => { return item.getBoundingClientRect(); });
 
         // hide if out of bound
-        if (lClientTops[0] > (pContainerTop + pOverlapFirst)) {
+        if (lClientBoundingRects[0].top > (pContainerTop + pOverlapFirst)) {
             // console.log("scroll more :"+lClientTops[0] +">"+ (pContainerTop + pOverlapFirst));
             if (this.mIsVisible) {
                 this.hide();
             }
 
-        } else if (lClientTops[lNbClientBoundingRects - 1] < pOverlapLast) {
+        } else if (lClientBoundingRects[lNbClientBoundingRects - 1].top < pOverlapLast) {
             // console.log("scroll less :"+lClientTops[lNbClientBoundingRects - 1] +"<"+ (window.innerHeight - pOverlapLast));
             if (this.mIsVisible) {
                 this.hide();
@@ -86,7 +86,7 @@ export class ScrollerSpy extends THREE.EventDispatcher {
             let lMinDist = Number.MAX_VALUE;
             let lFound = 0;
             for (let i = 0; i < lNbClientBoundingRects; i++) {
-                let lCurrDist = lClientTops[i];
+                let lCurrDist = lClientBoundingRects[i].top + lClientBoundingRects[i].height/2;
                 if (lCurrDist > 0 && lCurrDist < lMinDist) {
                     lFound = i;
                     lMinDist = lCurrDist;

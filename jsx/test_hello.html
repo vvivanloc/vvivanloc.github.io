@@ -1,12 +1,20 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 
 <head>
-   <script src="thirdparty/reactStub.js"></script>      
+  <script src="thirdparty/reactStub.js"></script>
 </head>
-<body>
-    <div id="testjsx"></div>
 
-    <script src="hello.js"></script>   
+<body>
+  <hellojsx></hellojsx>
+
+  <script src="hello.js"></script>
+
+  <script>
+   
+    var lElements = document.getElementsByTagName('hellojsx');
+    var lHelloBuilder = Hello(lElements);
+    lHelloBuilder.render();
+  </script>
+
 </body>
-  
