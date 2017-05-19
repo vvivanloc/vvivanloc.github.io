@@ -10,53 +10,6 @@ const cPortalOutputContainerID = "portaloutput";
 
 let lPortalInputContainer = document.getElementById(cPortalInputContainerID);
 
-const lMaxNbImages = 6;
-
-function buildTooltip(): Array<string> {
-    let lTooltipImgSrcs = new Array();
-
-    for (let i = 0; i < lMaxNbImages; i++) {
-        lTooltipImgSrcs.push("img/tooltip/" + i + ".png");
-    }
-
-    return lTooltipImgSrcs;
-}
-
-let lTooltipImgSrcs = buildTooltip();
-const cTooltipButtonID = "portalinput_tooltip_button";
-const cTooltipContainerID = "portalinput_tooltip_img";
-let lTooltipImgElement: HTMLImageElement = <HTMLImageElement>document.getElementById(cTooltipContainerID);
-let i = 0;
-const lLongerSlideRanks = [2, 5];
-function runTooltip() {
-
-    if (!lTooltipImgElement.parentElement.classList.contains("hidden")) {
-        lTooltipImgElement.src = lTooltipImgSrcs[i];
-        if (i < lMaxNbImages - 1) {
-            i++;
-        }
-        else {
-            i = 0;
-        }
-        setTimeout(runTooltip, (lLongerSlideRanks.indexOf(i - 1) !== -1) ? 1000 : 500);
-    }
-}
-
-
-
-let lTooltipButton = document.getElementById(cTooltipButtonID);
-lTooltipButton.addEventListener("click", () => {
-    if (lTooltipImgElement.parentElement.classList.contains("hidden")) {
-        lTooltipImgElement.parentElement.classList.remove("hidden");
-        if (lTooltipImgElement) {
-            runTooltip();
-        }
-    } else {
-        lTooltipImgElement.parentElement.classList.add("hidden");
-        
-    }
-});
-
 // Initialize Three.js if WebGL is available
 if (!Detector.webgl) {
 
@@ -230,13 +183,14 @@ if (!Detector.webgl) {
             let lObjectName = <string>(pEvent.objectName as string);
 
             // find current most visible section
+            const cOutputTopOffset:number=100;
             let lSectionTops: Array<number> = lSections.map((item) => { return LayoutUtils.getBoundingAbsoluteLeftTopCorner(item).top; });
 
             // scroll to section 
             let lIdx = lModels.indexOf(lObjectName);
-            let lScrollPosY = lSectionTops[lIdx] - (window.innerHeight - lSections[lIdx].getBoundingClientRect().height - lNavBar.getBoundingClientRect().height * 1.1) / 2;
+            let lScrollPosY = lSectionTops[lIdx] - (window.innerHeight - lSections[lIdx].getBoundingClientRect().height - lNavBar.getBoundingClientRect().height * 1.1) / 2 - cOutputTopOffset;
             // - lNavBar.getBoundingClientRect().height*0.75
-            LayoutUtils.smoothScrollTop(lScrollPosY, 1000);
+            LayoutUtils.smoothScrollTop(lScrollPosY, 5);
             //window.scrollTo(0,lScrollPosY);
             console.log(lSectionTops)
             console.log("scrollTo:" + lSectionTops[lIdx])

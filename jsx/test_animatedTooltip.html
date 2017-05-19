@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../dist/css/custom.min.css" rel="stylesheet">
+
+
+    <!-- jQuery -->
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core  -->
+    <script src="../../vendor/bootstrap/js/bootstrap.js"></script>
+
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+
+    <script src="thirdparty/reactStub.js"></script>
+    <script src="thirdparty/uuid.js"></script>
+
+</head>
+
+<body id="page-top" class="index">
+
+
+  <section id="1stsection">
+        <div class="container-fluid">
+            <div class="row" style="background: blue;">
+                 <div id="portalinput" class="portal"/>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="web">
+        <div class="container-fluid">
+            <div class="row" style="background: green;">
+                <div id="portalinput" class="portal">
+                    <animatedtooltip data-imgpath="../../img/tooltip" data-nbimgs="7" data-slowranks="2;5"/>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <!-- Theme + custom scripts -->
+    <script src="animatedTooltip.js"></script>
+
+    <script>
+        let lElements = document.getElementsByTagName('animatedtooltip');
+        let lAnimatedTooltipBuilder = AnimatedTooltip(lElements);
+        lAnimatedTooltipBuilder.render();
+    </script>
+
+</body>
+
+</html>

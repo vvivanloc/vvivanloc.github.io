@@ -29,14 +29,20 @@ canvas {
 
 
 /* fix ugly Bootstrap fix causing scrolling mess+nav button position error in mobile definition */
-
-
 /* https://github.com/twbs/bootstrap/issues/10875 */
 
 .row {
     margin-left: 0px !important;
     margin-right: 0px !important;
 }
+
+// .navbar-fixed-top {
+//     right: 20px !important;
+// }
+
+// .container>.navbar-header {
+//     margin-right: 0px !important; 
+// }
 
 .bigbtn {
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -72,30 +78,12 @@ canvas {
     display: table;
 }
 
-@media (max-width: 766px) {
-    .paddingtop {
-        padding-top: 3px;
-    }
-}
-
-@media(min-width:767px) {
-    .paddingtop {
-        padding-top: 15px;
-    }
-}
-
 .paddingminiright {
     padding-right: 15px;
 }
 
 .nav-pills>li.active>a {
     background-color: #345979 !important;
-}
-
-@media(min-width:767px) {
-    .nav-pills>li+li {
-        padding-left: 10px; // 2px by default
-    }
 }
 
 .nav-pills>li>a {
@@ -127,27 +115,6 @@ canvas {
     width: 100%;
 }
 
-@media(min-width:767px) {
-    .carousel-control {
-        font-size: 7em !important;
-    }
-    .img-responsive {
-        max-width: 512px !important;
-    }
-    .logo-header>img {
-        height: 32px;
-    }
-}
-
-@media(max-width:766px) {
-    .carousel-control {
-        font-size: 5em !important;
-    }
-    .logo-header>img {
-        height: 24px;
-    }
-}
-
 @media(min-width:1000px) {
     .logo-header>span {
         display: inline;
@@ -160,9 +127,50 @@ canvas {
     }
 }
 
-@media(max-width:766px) {
+@media (max-width: 766px) {
+    .paddingtop {
+        padding-top: 3px;
+    }
+    .biglogo {
+        height: 50px;
+    }
+    .carousel-control {
+        font-size: 5em !important;
+    }
+    .logo-header>img {
+        height: 24px;
+    }
     .logo-header>span {
         display: inline;
+    }
+
+    .front {
+        min-height: 420px;
+    }
+}
+
+@media(min-width:767px) {
+    .paddingtop {
+        padding-top: 15px;
+    }
+    .biglogo {
+        height: 75px;
+    }
+    .nav-pills>li+li {
+        padding-left: 10px; // 2px by default
+    }
+    .carousel-control {
+        font-size: 7em !important;
+    }
+    .img-responsive {
+        max-width: 512px !important;
+    }
+    .logo-header>img {
+        height: 32px;
+    }
+
+    .front {
+        min-height: 520px;
     }
 }
 
@@ -262,9 +270,7 @@ from http://stackoverflow.com/questions/1495407/maintain-the-aspect-ratio-of-a-d
     margin: auto;
 }
 
-.front {
-    min-height: 520px;
-}
+
 
 .overlap-lowerleft {
     position: absolute;
@@ -274,6 +280,45 @@ from http://stackoverflow.com/questions/1495407/maintain-the-aspect-ratio-of-a-d
 
 .overlap-lowerleft-tooltip {
     position: absolute;
-    margin-left: 20px;
-    bottom: -145px;
+    margin-left: 10px;
+    margin-top: 35px;
 }
+
+// CSS Triangle by Chris COYIER, 2016
+// https://css-tricks.com/snippets/css/css-triangle/
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 13px solid transparent;
+  border-right: 13px solid transparent;
+  
+  border-bottom: 13px solid #eee;
+
+  z-index: 6000;
+  margin-left: 10px;
+}
+
+.noborder {
+    border: 0px !important;
+}
+
+.paddinglittle {
+    padding: 5px;
+}
+
+.img-responsive-smaller {
+    max-width : 80% !important;
+}
+
+.backgroundgray {
+    background: #eee !important;
+}
+.box-shadow {    
+    box-shadow: 0 5px 10px rgba(0,0,0,.3);
+}
+
+/* debug 
+* {
+     border: 1px solid red
+}
+*/
