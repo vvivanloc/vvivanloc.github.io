@@ -22,6 +22,11 @@
 
     <script src="thirdparty/reactStub.js"></script>
     <script src="thirdparty/uuid.js"></script>
+    <style>
+        section{
+            height:600px;
+        }
+    </style>
 
 </head>
 
@@ -32,11 +37,43 @@
     <section id="web">
         <div class="container mid-height">
             <div class="row">
-                <h3>Web</h3>
+                <h3>Test panel - on small display, main image is hidden</h3>
 
-                <div class="col-sm-8">
+                <div class="col-sm-12">
                     <div class="flipcard">
-                        <flipcardfront data-imgsrc="../img/portfolio/web/tablet3DJuumpInfinite.png" data-imgalt="3DJuumpInfiniteWeb">
+                        <flipcardfront data-imgsrc="../img/portfolio/web/3DJuumpInfiniteWeb0.jpg" data-imgalt="3DJuumpInfiniteWeb">
+                            One morning, when <a target="_blank" href="http://fr.lipsum.com/feed/html">Gregor Samsa</a> woke
+                            from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay
+                            on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly
+                            domed and divided by arches into stiff sections. The bedding was hardly able to cover it and
+                            seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of
+                            the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought. It
+                            wasn't a dream.
+                        </flipcardfront>
+
+                        <div class="back">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h3>title</h3>
+                                    <p>Some content.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="web">
+        <div class="container mid-height">
+            <div class="row">
+
+                <h3>Test panel with small display carousel</h3>
+
+                <div class="col-sm-12">
+                    <div class="flipcard">
+                        <flipcardfront data-imgsrc="../img/portfolio/web/3DJuumpInfiniteWeb0.jpg" data-imgalt="3DJuumpInfiniteWeb" data-imgpath="../img/portfolio/web"
+                            data-imgsrcs="3DJuumpInfiniteWeb1.jpg;3DJuumpInfiniteWeb3.jpg">
                             One morning, when <a target="_blank" href="http://fr.lipsum.com/feed/html">Gregor Samsa</a> woke
                             from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay
                             on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly
@@ -65,12 +102,17 @@
 
 
     <!-- Theme + custom scripts -->
+    <script src="carousel.js"></script>
     <script src="flipcardFront.js"></script>
 
     <script>
         let lElements = document.getElementsByTagName('flipcardfront');
         let lFlipcardFrontBuilder = FlipcardFront(lElements);
         lFlipcardFrontBuilder.render();
+
+        lElements = document.getElementsByTagName('carousel');
+        let lCarouselBuilder = new Carousel(lElements);
+        lCarouselBuilder.render();
 
         //flip
         $(".flipcard").flip();

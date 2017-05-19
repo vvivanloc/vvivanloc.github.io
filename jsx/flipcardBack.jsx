@@ -52,7 +52,9 @@ let FlipcardBack = function (pElements) {
             lTabContents.push(
                 <div id={lID + "_" + i} class= {(i === lActiveTabRank ? "tab-pane fade in active" : "tab-pane fade")}>
                     {lCarouselImgSrcs !== "" ?
-                        <carousel id={lID + "-carousel-" + i} data-imgpath={lCarouselImgPath} data-imgsrcs={lCarouselImgSrcs} data-controls></carousel>
+                        <div class="hidden-xs">
+                            <carousel id={lID + "-carousel-" + i} data-imgpath={lCarouselImgPath} data-imgsrcs={lCarouselImgSrcs} data-controls></carousel>
+                        </div>
                         :
                         ""
                     }

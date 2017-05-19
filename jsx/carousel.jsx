@@ -19,7 +19,7 @@ let Carousel = function (pElements) {
 
     function _buildImage(pImagePath, pTitle) {
         return (
-            <img src={pImagePath} alt={pTitle} class="hidden-xs img-rounded img-responsive center-block"></img>
+            <img src={pImagePath} alt={pTitle} class="img-rounded img-responsive center-block"></img>
         );
     }
     function _buildCarousel(pTarget, pPath, pFilenames, pTitles, pCaptions) {
@@ -37,7 +37,7 @@ let Carousel = function (pElements) {
             // create images
             let lCompletePath = pPath + "/" + pFilenames[i];
             lCarouselInners.push(
-                <div class={i === 0 ? "item item-image active" : "item item-image"}>
+                <div class={(i === 0 ? "active" : " ")+" item item-image"}>
                     {_buildImage(lCompletePath, i < pTitles.length ? pTitles[i] : "")}
                     {pTitles.length > 0 ?
                         <div class="carousel-caption">
@@ -91,7 +91,7 @@ let Carousel = function (pElements) {
 
                     let lCarousel = _buildCarousel(lTarget, lAssetPath, lImageFilenames, lTitles, lCaptions);
                     lNewElement = (
-                        <div id={lTarget} class="hidden-xs carousel slide" data-ride="carousel">
+                        <div id={lTarget} class="carousel slide" data-ride="carousel">
                             {lShowControls ? "" : <ol class="carousel-indicators">{lCarousel.indicators}</ol>}
 
                             <div class="carousel-inner" role="listbox">

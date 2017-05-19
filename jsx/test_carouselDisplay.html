@@ -21,7 +21,7 @@
             <div class="col-lg-8 col-lg-offset-2">
 
                 <h2>Carousel 1</h2>
-                from html 
+                from html
                 <!-- image carrousel -->
                 <div id="myCarousel0" class="carousel slide" data-ride="carousel">
                     <!--Indicators -->
@@ -33,14 +33,14 @@
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
-                            <img src="../img/portfolio/web/chess0.png" alt="Mesange" class="img-rounded img-responsive center-block"></img>
+                            <img src="../img/portfolio/web/chess0.jpg" alt="Mesange" class="img-rounded img-responsive center-block"></img>
                             <div class="carousel-caption">
                                 <h4>Mésange</h4>
                                 <small>Janek Pärn, mésange bleue à Simuna (Estonie), Wikimedia Commons</small>
                             </div>
                         </div>
                         <div class="item ">
-                            <img src="../img/portfolio/web/chess1.png" alt="Mesange" class="img-rounded img-responsive center-block"></img>
+                            <img src="../img/portfolio/web/chess1.jpg" alt="Mesange" class="img-rounded img-responsive center-block"></img>
                             <div class="carousel-caption">
 
                                 <h4>Mésange</h4>
@@ -58,7 +58,7 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Carousel 2</h2>
                 from jsx without title nor caption
-                <carousel id="myCarousel" data-imgpath="../img/portfolio" data-imgsrcs="web/3DJuumpInfiniteWeb1.png;web/chess1.png" >
+                <carousel id="myCarousel" data-imgpath="../img/portfolio" data-imgsrcs="web/3DJuumpInfiniteWeb1.jpg;web/chess1.jpg">
                 </carousel>
             </div>
         </div>
@@ -67,7 +67,8 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Carousel 3</h2>
                 from jsx with titles and captions
-                <carousel id="myCarousel2" data-imgpath="../img/portfolio" data-imgsrcs="web/3DJuumpInfiniteWeb0.png;web/chess0.png" data-titles="3DJuI;chess" data-captions="foo;bar" >
+                <carousel id="myCarousel2" data-imgpath="../img/portfolio" data-imgsrcs="web/3DJuumpInfiniteWeb0.jpg;web/chess0.jpg" data-titles="3DJuI;chess"
+                    data-captions="foo;bar">
                 </carousel>
             </div>
         </div>
@@ -77,11 +78,19 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Carousel 4</h2>
                 from jsx with titles only
-                <carousel id="myCarousel3" data-imgpath="../img/portfolio" data-imgsrcs="web/3DJuumpInfiniteWeb0.png;web/chess1.png" data-titles="3DJuI;chess" >
+                <carousel id="myCarousel3" data-imgpath="../img/portfolio" data-imgsrcs="web/3DJuumpInfiniteWeb0.jpg;web/chess1.jpg" data-titles="3DJuI;chess">
                 </carousel>
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Carousel 5</h2>
+                only one image
+                <carousel id="myCarousel2" data-imgpath="../img/portfolio" data-imgsrcs="web/chess1.jpg" data-titles="chess" data-controls>
+                </carousel>
+            </div>
+        </div>
     </div>
 
 
@@ -94,7 +103,7 @@
 
     <!-- Theme + custom scripts -->
     <script src="carousel.js"></script>
-   <script>
+    <script>
         let lElements = document.getElementsByTagName('carousel');
         let lCarouselBuilder = new Carousel(lElements);
         lCarouselBuilder.render();
