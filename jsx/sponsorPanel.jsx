@@ -1,4 +1,4 @@
-
+// @flow
 
 let SponsorPanel = function (pElements, pConfig) {
 
@@ -10,6 +10,7 @@ let SponsorPanel = function (pElements, pConfig) {
         height: 50,
         marginbottom: "0px",
         margintop: "0px",
+        caption: false
     };
 
     if (pConfig) {
@@ -18,6 +19,7 @@ let SponsorPanel = function (pElements, pConfig) {
         _mConfig["height"] = pConfig["height"] ? pConfig["height"] : _mConfig["height"];
         _mConfig["marginbottom"] = pConfig["marginbottom"] ? pConfig["marginbottom"] : _mConfig["marginbottom"];
         _mConfig["margintop"] = pConfig["margintop"] ? pConfig["margintop"] : _mConfig["margintop"];
+        _mConfig["caption"] = pConfig["caption"] ? pConfig["caption"] : _mConfig["caption"];
     }
 
     function buildImage(pImgName, pImgPath, pMarginBottom, pAddMargin) {
@@ -50,6 +52,16 @@ let SponsorPanel = function (pElements, pConfig) {
         return lImageSpans;
     }
 
+    function buildCaption(pImgNames, pConfig) {
+        if (pConfig["caption"]) {
+            return (
+                <div class="hidden-md hidden-lg"><i>{pImgNames.join(" ")}</i></div>
+            );
+        } else {
+            return "";
+        }
+    }
+
     return {
         render: function () {
 
@@ -75,6 +87,8 @@ let SponsorPanel = function (pElements, pConfig) {
                 lConfig["marginbottom"] = lElement.hasAttribute("data-marginbottom") ? lElement.getAttribute("data-marginbottom") : lConfig["marginbottom"];
                 lConfig["margintop"] = lElement.hasAttribute("data-margintop") ? lElement.getAttribute("data-margintop") : lConfig["margintop"];
 
+                lConfig["caption"] = lElement.hasAttribute("data-caption") ? true : lConfig["caption"];
+
                 let lContent = lElement.innerHTML;
                 lElement.innerHTML = "";
 
@@ -82,6 +96,7 @@ let SponsorPanel = function (pElements, pConfig) {
                 let lNewElement = (
                     <span style={"display:inline-block; height:" + lConfig["height"] + "px;margin-top:"+lConfig["margintop"]}>
                         {buildImageSpan(lImgNames, lConfig)}
+                        {buildCaption(lImgNames, lConfig)}
                     </span>
                 );
 

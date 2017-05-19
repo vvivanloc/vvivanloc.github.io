@@ -54,12 +54,18 @@
                 </techpanel>
 
                 <h3>Technologies full with tooltip</h3>
-                <techpanel data-tooltip data-names="git;powerpoint;arb;glsl;python;blender;gnu build system;qt;bootstrap;gulp;redway3D;cannonjs;html;sphinx;cmake;inkscape;svn;codeXL;jquery;threejs;c++;js;typescript;css;jsx;visualstudio;debian packaging;leaflet;vscode;dictionnary;less;webgl;doxygen;lubuntu;webpack;gcc;npm;word;gdb;opengl;zepto;gimp;openscenegraph">
+                <techpanel data-tooltip data-names="git;powerpoint;arb;glsl;python;blender;gnu build system;qt;bootstrap;gulp;redway3D;cannonjs;html;sphinx;cmake;inkscape;svn;codeXL;jquery;threejs;c++;js;typescript;css;jsx;visualstudio;debian packaging;leaflet;vscode;dictionary;less;webgl;doxygen;lubuntu;webpack;gcc;npm;word;gdb;opengl;zepto;gimp;openscenegraph">
                 </techpanel>
 
                 <h3>Technologies full with tooltip and margin bottom</h3>
-                <techpanel data-tooltip data-marginbottom=20px data-names="git;powerpoint;arb;glsl;python;blender;gnu build system;qt;bootstrap;gulp;redway3D;cannonjs;html;sphinx;cmake;inkscape;svn;codeXL;jquery;threejs;c++;js;typescript;css;jsx;visualstudio;debian packaging;leaflet;vscode;dictionnary;less;webgl;doxygen;lubuntu;webpack;gcc;npm;word;gdb;opengl;zepto;gimp;openscenegraph">
+                <techpanel data-tooltip data-marginbottom=20px data-names="git;powerpoint;arb;glsl;python;blender;gnu build system;qt;bootstrap;gulp;redway3D;cannonjs;html;sphinx;cmake;inkscape;svn;codeXL;jquery;threejs;c++;js;typescript;css;jsx;visualstudio;debian packaging;leaflet;vscode;dictionary;less;webgl;doxygen;lubuntu;webpack;gcc;npm;word;gdb;opengl;zepto;gimp;openscenegraph">
                 </techpanel>
+
+                 <h3>Technologies full with tooltip margin bottom and caption on <b>small and extra small displays</b></h3>
+                <techpanel data-tooltip data-marginbottom=20px data-names="git;powerpoint;arb;glsl;python;blender;gnu build system;qt;bootstrap;gulp;redway3D;cannonjs;html;sphinx;cmake;inkscape;svn;codeXL;jquery;threejs;c++;js;typescript;css;jsx;visualstudio;debian packaging;leaflet;vscode;dictionary;less;webgl;doxygen;lubuntu;webpack;gcc;npm;word;gdb;opengl;zepto;gimp;openscenegraph" data-caption>
+                </techpanel>
+                <techpanelcaption data-tooltip data-marginbottom=20px data-names="git;powerpoint;arb;glsl;python;blender;gnu build system;qt;bootstrap;gulp;redway3D;cannonjs;html;sphinx;cmake;inkscape;svn;codeXL;jquery;threejs;c++;js;typescript;css;jsx;visualstudio;debian packaging;leaflet;vscode;dictionary;less;webgl;doxygen;lubuntu;webpack;gcc;npm;word;gdb;opengl;zepto;gimp;openscenegraph" data-caption>
+                </techpanelcaption>
 
                 
             </div>
@@ -95,6 +101,17 @@
         };
         let lTechPanel = SponsorPanel(lElements,lConfig);
         lTechPanel.render();
+
+        lElements = document.getElementsByTagName('techpanelcaption');
+        lConfig= {
+            imgpath:"../img/portfolio/technologies",
+            header:false,
+            height:32,
+            caption: true
+        };
+        let lTechPanelWithCaption = SponsorPanel(lElements,lConfig);
+        lTechPanelWithCaption.render();
+
     </script>
 
 </body>

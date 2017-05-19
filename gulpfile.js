@@ -162,7 +162,7 @@ gulp.task('browserSync', function() {
 gulp.task('dev', ['browserSync', 'less', 'minify-css', 'jsx', 'concat-js'], function() {
     gulp.watch('less/*.less', ['less','minify-css']);
     gulp.watch('css/*.css', ['minify-css']);
-    gulp.watch('jsx/*.jsx', ['jsx','concat-js']);
+    gulp.watch(['jsx/*.jsx','jsx/jsxRenderer.js'],['jsx','concat-js']);
     gulp.watch(['js/*.js','ts/*.ts','dropped/**/*.ts'],['concat-js']);
     // Reloads the browser whenever HTML or JS files change
     gulp.watch(['*.html','jsx/*.html','js/**/*.js'], browserSync.reload);
