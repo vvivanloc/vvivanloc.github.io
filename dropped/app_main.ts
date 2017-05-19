@@ -1,8 +1,8 @@
-import Application = require("app/application");
-import SceneObjectsEvents = require("lib/sceneObjectsEvents");
-import LayoutUtils = require("lib/layoutUtils");
+import Application = require("./app/application");
+import SceneObjectsEvents = require("./lib/sceneObjectsEvents");
+import LayoutUtils = require("./lib/layoutUtils");
 
-import globalConfig = require("lib/config");
+import globalConfig = require("./lib/config");
 
 
 const cPortalInputContainerID = "portalinput";

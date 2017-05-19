@@ -1,6 +1,6 @@
 
-import globalConfig = require("lib/config");
-import AnimatedModelLoader = require("lib/animatedModelLoader")
+import globalConfig = require("../lib/config");
+import AnimatedModelLoader = require("../lib/animatedModelLoader")
 
 const cDefaultColor = 0x008800;
 const cMovingColor = 0x880000;

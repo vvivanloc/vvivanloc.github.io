@@ -580,7 +580,21 @@
         $(".flipcard").flip();
     </script>
 
-    <script src="dist/js/bundle.min.js"></script>
+    <!-- build:js -->
+    <script src="dropped/thirdparty/require/require.min.js"></script>
+    <script>
+        /* will be replaced by gulp for the prod version */
+        requirejs.config({
+            baseUrl: '.',
+            paths: {
+                app: 'app',
+            }
+        });
+
+
+        requirejs(["dropped/app_main.js"]);
+    </script>
+    <!-- endbuild -->
 
 
 </body>

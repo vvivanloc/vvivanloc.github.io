@@ -1,4 +1,4 @@
-import SceneObjectsEvents = require("lib/sceneObjectsEvents");
+import SceneObjectsEvents = require("../lib/sceneObjectsEvents");
 
 class PhysicsStartParameters {
     mass: number = 1;

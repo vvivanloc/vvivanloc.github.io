@@ -1,13 +1,13 @@
 /// <reference path="../thirdparty/three/index.d.ts" />
 /// <reference path="../thirdparty/cannon/cannon.d.ts" />
 
-import globalConfig = require("lib/config");
+import globalConfig = require("../lib/config");
 
-import SceneObjects = require("lib/sceneObjects");
-import SceneObjectsEvents = require("lib/sceneObjectsEvents");
-import Marker = require("lib/marker");
-import PhysicsModelLoader = require("lib/physicsModelLoader");
-import PortalView = require("lib/portalView");
+import SceneObjects = require("../lib/sceneObjects");
+import SceneObjectsEvents = require("../lib/sceneObjectsEvents");
+import Marker = require("../lib/marker");
+import PhysicsModelLoader = require("../lib/physicsModelLoader");
+import PortalView = require("../lib/portalView");
 
 
 

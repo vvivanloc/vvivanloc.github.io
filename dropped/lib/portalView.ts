@@ -1,5 +1,5 @@
-import globalConfig = require("lib/config");
-import ModelLoader = require("lib/modelLoader")
+import globalConfig = require("../lib/config");
+import ModelLoader = require("../lib/modelLoader")
 
 class PortalView {
 

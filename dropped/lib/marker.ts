@@ -1,7 +1,7 @@
 
-import MarkerView = require("lib/markerView");
-import JointConstraint = require("lib/jointConstraint");
-import SceneObjects = require("lib/sceneObjects");
+import MarkerView = require("../lib/markerView");
+import JointConstraint = require("../lib/jointConstraint");
+import SceneObjects = require("../lib/sceneObjects");
 
 class Marker {
     private mView: MarkerView.MarkerView;

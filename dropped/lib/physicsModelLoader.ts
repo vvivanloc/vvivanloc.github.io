@@ -1,5 +1,5 @@
-import SceneObjects = require("lib/sceneObjects")
-import ModelLoader = require("lib/modelLoader")
+import SceneObjects = require("../lib/sceneObjects")
+import ModelLoader = require("../lib/modelLoader")
 
 class PhysicsModelLoader {
     private mScene: THREE.Scene;
