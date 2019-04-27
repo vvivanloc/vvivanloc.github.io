@@ -13,7 +13,7 @@
     "font-awesome": "^4.6.3",
     "gulp-html-replace": "^1.6.2",
     "gulp-plumber": "^1.1.0",
-    "jquery": "^1.11.3"
+    "jquery": "^3.4.0"
   },
   "optionalDependencies": {
     "fsevents": "*"
