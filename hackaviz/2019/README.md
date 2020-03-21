@@ -16,6 +16,6 @@ Data vizualisation
 - Pure CSS tooltip
 - VSCode, Gimp, Inkscape
 
-The demo is available [here](https://vvivanloc.github.io/hackaviz2019/).
+The demo is available [here](https://vvivanloc.github.io/hackaviz/2019/).
 
 *Vincent*
