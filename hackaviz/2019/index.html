@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+  <head profile="http://gmpg.org/xfn/11">
+    <title>Jobastre - Hackaviz 2019</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="leaflet/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <h1>Jobastre</h1>
+    La dataviz pour la France qui se lève pas forcément très tôt pour aller chercher un travail en traversant la rue.
+    <h2>Où ça ?</h2>
+    Combien de rues je vais devoir traverser pour trouver mon prochain boulot ?
+    <div class="column">
+      <div class="map" id="mapJob"></div>
+      <div class="info" id="infoCSP"></div>
+    </div>
+    <div>
+     
+    </div>
+    <div>
+      Répartition des 
+      <span
+        class="tooltip"
+        tooltip="Résidents qui travaillent dans la commune (inter) et qui se déplacent dans
+        une autre commune (extra)"
+        tooltip-position="bottom"
+        >actifs </span
+        
+      >
+      en 2015 par catégorie socioprofessionnelle en nombre de personnes
+
+      <ul>
+        <li>
+          <div
+            class="rectangle alpha"
+            style="background-color:hsl(236, 86%, 71%)"
+          ></div>
+          <span
+            class="tooltip"
+            tooltip=" 
+          Commerçants et assimilés
+          ,Chefs d'entreprise de 10 salariés ou plus
+          ,Professions libérales et assimilés
+          ,Cadres de la fonction publique, professions intellectuelles et
+          # artistiques
+          ,Cadres d'entreprise"
+            tooltip-position="bottom"
+            >CSP 1 (cadres)</span
+          >,
+        </li>
+
+        <li>
+          <div
+            class="rectangle"
+            alpha
+            style="background-color:hsl(86, 100%, 40%)"
+          ></div>
+          <span
+            class="tooltip"
+            tooltip-position="bottom"
+            tooltip="
+          Professions intermédiaires de l'enseignement, de la santé, de
+          la fonction publique et assimilés
+          ,Professions intermédiaires administratives et commerciales des
+          entreprises
+          ,Techniciens
+          ,Contremaîtres, agents de maîtrise
+          ,Artisans
+          ,Agriculteurs exploitants"
+            >CSP 2 (professions intermédiaires)</span
+          >
+        </li>
+        <div
+          class="rectangle"
+          alpha
+          style="background-color:hsl(26, 100%, 40%)"
+        ></div>
+        <span
+          class="tooltip"
+          tooltip-position="bottom"
+          tooltip="
+        Personnels des services directs particuliers
+        ,Employés de commerce
+        ,Employés administratifs d'entreprise
+        ,Employés de la fonction publique
+        ,Ouvriers qualifiés
+        ,Ouvriers non qualifiés
+        ,Ouvriers agricoles"
+          >CSP 3 (employés, ouvriers)</span
+        >
+      </ul>
+    </div>
+    <div>
+      <span
+        class="tooltip"
+        tooltip="Le revenu disponible d'un ménage comprend les revenus d'activité (nets des cotisations sociales), les revenus du patrimoine, les transferts en provenance d'autres ménages et les prestations sociales (y compris les pensions de retraite et les indemnités de chômage), nets des impôts directs."
+        tooltip-position="bottom"
+      >
+        Revenu médian par unité de consommation</span
+      >
+      en euros
+      <a
+        href="http://www.observatoire-des-territoires.gouv.fr/observatoire-des-territoires/fr/itdd-revenu-disponible-m-dian-par-unit-de-consommation"
+      >
+        (Observatoire des territoires)</a
+      >
+      <div class="col-2">
+        <ul>
+          <li>
+            <span
+              class="rectangle big"
+              style="background-image: url('maps/images/building_0.png')"
+            ></span>
+             [0-1300]
+          </li>
+          <li>
+            <span
+              class="rectangle big"
+              style="background-image: url('maps/images/building_1.png')"
+            ></span
+            > ]1300-1400]
+          </li>
+          <li>
+            <span
+              class="rectangle big"
+              style="background-image: url('maps/images/building_2.png')"
+            ></span
+            > ]1400-1600]
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <span
+              class="rectangle big"
+              style="background-image: url('maps/images/building_3.png')"
+            ></span
+            > ]1600-1800]
+          </li>
+          <li>
+            <span
+              class="rectangle big"
+              style="background-image: url('maps/images/building_4.png')"
+            ></span
+            > ]1800-2000]
+          </li>
+          <li>
+            <span
+              class="rectangle big"
+              style="background-image: url('maps/images/building_5.png')"
+            ></span
+            >2000 et plus
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>A pied, en vélo, en métro, en bus ou en auto ?</h2>
+    Ca y'est j'ai trouvé l'endroit idéal ! J'achète une nouvelle paire de chaussures, je répare mon vélo ou je fais passer le contrôle technique à ma veille voiture ?
+    <div class="column">
+      <div id="mapTransportationMean" class="map"></div>
+      <div class="info" id="infoMean"></div>
+    </div>
+    <div>
+      Répartition par moyen de transport en nombre de personnes dans la commune de résidence en 2015
+      <ul>
+        <li>
+          <div
+            class="rectangle alpha"
+            style="background-color:hsl(120, 100%, 40%)"
+          ></div>
+          <span>résidents sans voiture</span>
+        </li>
+        <li>
+          <div
+            class="rectangle alpha"
+            style="background-color:hsl(60, 100%, 40%)"
+          ></div>
+          <span>en voiture et résidents</span>
+        </li>
+        <li>
+          <div
+            class="rectangle alpha"
+            style="background-color:hsl(30, 100%, 40%)"
+          ></div>
+          <span>en voiture à l'extérieur </span>
+        </li>
+      </ul>
+    </div>
+    Comparatif vélo/auto 
+    <div><i>Cliquer sur la commune pour l'afficher, cliquer dans la carte pour le
+    <span id="hideArcs">cacher</span>.</i>
+  </div>
+  <div>
+    Calcul du gain vélo/voiture: 
+    min( temps de parcours en vélo, max ( gain temps vélo/voiture, vitesse de la voiture) )
+  </div>
+  </i>
+    <ul>
+        <li>
+          <span
+            class="rectangle big"
+            style="background-image: url('maps/images/road_0.png')"
+          ></span>
+          Prends ton vélo: moins de 40 minutes et c'est aussi rapide que la voiture.
+        </li>
+        <li>
+          <span
+            class="rectangle big"
+            style="background-image: url('maps/images/road_1.png')"
+          ></span
+          > Pour sportif uniquement: une heure de vélo ou c'est plus rapide en voiture.
+        </li>
+        <li>
+          <span
+            class="rectangle big"
+            style="background-image: url('maps/images/road_2.png')"
+          ></span
+          > C'est trop loin en vélo. 
+        </li>
+      </ul>
+
+    <div id="infoMean"></div>
+    <h2>Combien de temps ?</h2>
+    Pas de chance, je dois prendre mon auto. Est-ce que je vais devoir arrêter de développer le hackaviz 2019 toute la nuit ou je dois me coucher tôt. Est-ce que je vais péter une durite bloqué dans les bouchons ?
+    <div class="column">
+      <div id="mapCarTraffic" class="map"></div>
+      <div class="info" id="infoTraffic"></div>
+    </div>
+    <div>Temps cumulé A/R par commune en minute</div>
+    <div class='col-2'>
+    <div style="width: 400px;
+    height: 200px;
+    background-size: cover;
+    background-image: url('maps/images/trafficTown.gif')"></div>
+     <ul>
+      <li>
+        <div
+          class="rectangle alpha"
+          style="background-color:hsl(200, 100%, 40%)"
+        ></div>
+        <span> moins de 1/4 d'heure: roooh, trop rapide, je pourrais reprendre mon vélo.</span>
+      </li>
+      <li>
+        <div
+          class="rectangle alpha"
+          style="background-color:hsl(120, 100%, 40%)"
+        ></div>
+        <span> entre 15 et 30 minutes: hum, faudrait que j'essaie en vélo.</span>
+      </li>
+      <li>
+        <div
+          class="rectangle alpha"
+          style="background-color:hsl(50, 100%, 40%)"
+        ></div>
+        <span> entre 30 et 45 minutes: je prends mon mal en patience </span>
+      </li>
+      <li>
+        <div
+          class="rectangle alpha"
+          style="background-color:hsl(40, 100%, 40%)"
+        ></div>
+        <span> entre 45 minutes et 1 heure: pourquoi je me suis levé ce matin ?</span>
+      </li>
+      <li>
+        <div
+          class="rectangle alpha"
+          style="background-color:hsl(20, 100%, 40%)"
+        ></div>
+        <span> entre 1 heure et 2 heures: hum, ça commence à bien faire </span>
+      </li>
+      <li>
+        <div
+          class="rectangle alpha"
+          style="background-color:hsl(0, 100%, 40%)"
+        ></div>
+        <span> plus de 2 heures: va falloir songer à déménager ou à démissionner</span>
+      </li>
+    </ul>
+  </div>
+    <div>Trafic A/R entre communes</div>
+    <div><i>Cliquer sur la commune pour afficher le trafic, cliquer dans la carte pour le
+      cacher.</i>
+  <div style="width: 750px;
+  height: 150px;
+  background-size: cover;
+  background-image: url('maps/images/trafficArc.gif')"></div>
+    <script type="text/javascript" src="maps/par_commune.js"></script>
+    <script type="text/javascript" src="maps/par_trajet.js"></script>
+    <!-- <script type="text/javascript" src="leaflet/leaflet.js"></script> -->
+
+    <script type="text/javascript" src="bundle.js"></script>
+    <!-- leaflet plugins -->
+    <script
+      type="text/javascript"
+      src="leaflet/leaflet.polylineoffset.js"
+    ></script>
+    <!-- <script type="text/javascript" src="leaflet/leaflet-ant-path.js"></script> -->
+  </body>
+</html>
